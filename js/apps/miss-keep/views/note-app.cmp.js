@@ -7,7 +7,7 @@ export default {
               <section class="note-app">
                   <h1>Notes</h1>
                   <router-link to="/" class="home-go">Home</router-link>
-                  <note-list :notes="notesToShow"></note-list>
+                  <note-list @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
   
       `,
@@ -20,12 +20,21 @@ export default {
     };
   },
   created() {
-    noteService.query().then((notes) => (this.notes = notes));
+    this.loadNotes();
+    // noteService.query().then((notes) => (this.notes = notes));
   },
   methods: {
-    updatedNotes(notes) {
-      eventBus.on("noteRemoved", this.notes);
-      this.notes = notes;
+    loadNotes() {
+      noteService.query().then((notes) => {
+        return (this.notes = notes);
+      });
+    },
+
+    deleteNote(id) {
+      noteService.removeNote(id).then(() => {
+        const idx = this.notes.findIndex((note) => note.id === id);
+        this.notes.splice(idx, 1);
+      });
     },
   },
 
