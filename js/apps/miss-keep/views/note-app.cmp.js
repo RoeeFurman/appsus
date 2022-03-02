@@ -5,8 +5,9 @@ export default {
   template: `
               <section class="note-app">
                   <h1>Notes</h1>
-                  <router-link to="/" class="note-go">Home</router-link>
+                  <router-link to="/" class="home-go">Home</router-link>
                   <note-list :notes="notesToShow"></note-list>
+
               </section>
   
       `,
