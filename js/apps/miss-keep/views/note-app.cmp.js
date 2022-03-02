@@ -21,7 +21,6 @@ export default {
   },
   created() {
     this.loadNotes();
-    // noteService.query().then((notes) => (this.notes = notes));
   },
   methods: {
     loadNotes() {

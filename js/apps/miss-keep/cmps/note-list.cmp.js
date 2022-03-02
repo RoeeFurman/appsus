@@ -10,12 +10,18 @@ export default {
                     <button @click="removeNote(note.id)">
                       <img src="img-notes/bx-trash.svg" alt="trash">
                     </button>
+                    <button @click="colorNote(note.id)">
+                      <img src="img-notes/bxs-palette.svg" alt="palette">
+                    </button>
                 </li>
             </ul>
         </section>
     `,
   components: {
     notePreview,
+  },
+  data() {
+    return {};
   },
   methods: {
     removeNote(noteId) {

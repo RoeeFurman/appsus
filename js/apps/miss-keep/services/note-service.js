@@ -93,6 +93,8 @@ function editNote(noteId) {}
 
 // function emailNote(noteId) {}
 
-function colorNote() {}
+function colorNote(noteId) {
+  return storageService.get(NOTES_KEY, noteId);
+}
 
 function pinNote() {}
