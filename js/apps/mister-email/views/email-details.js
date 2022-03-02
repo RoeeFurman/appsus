@@ -1,4 +1,5 @@
 import { mailService } from "../services/mail-service.js";
+import { eventBus } from "../../../services/eventBus-service.js";
 
 export default {
   template: `
@@ -11,7 +12,11 @@ export default {
                     <span>sent at: {{mail.sentAt}}</span><br>
                     <span>sent to: {{mail.to}}</span><br>
                     <span>body: {{mail.body}}</span>
-
+                    <hr>
+                    <button @click="deleteMail">delete mail</button>
+                    <router-link class="back-link" to="/mail/"> |
+                        Back to Mails
+                    </router-link>
                     <br>
                 </section>
                 `,
@@ -25,10 +30,20 @@ export default {
   created() {
     const id = this.$route.params.mailId;
     this.mailId = id;
-    console.log(id);
+    // console.log(id);
     mailService.get(id).then((mail) => {
       console.log(mail);
       this.mail = mail;
     });
+  },
+  methods: {
+    deleteMail() {
+      mailService
+        .remove(this.mail.id)
+        .then(() => mailService.query()
+        .then((mail) => console.log(mail)));
+      //       console.log(this.mail.id)
+      //       mailService.removeMail(this.mail.id).then(mail => console.log(mail))
+    },
   },
 };

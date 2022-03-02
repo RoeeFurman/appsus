@@ -1,24 +1,28 @@
-import mailPreview from "./mail-preview.cmp.js";
+import mailPreview from './mail-preview.cmp.js'
 
 export default {
-  props: ["mails"],
-  template: `
-            <h1>Mail preview</h1>
+    props: ['mails'],
+    template: `
         <section class="mail-list">
-            <article v-for="mail in mails">
-      <router-link :to="'/mail/'+mail.id">
-            <mail-preview :mail="mail">
-    </router-link>
-        </article>
+            <hr>
+                <div v-for="mail in mails" :key="mail.id">
+                   <mail-preview :mail="mail" />
+                   <!-- <div class="actions">
+                       <button @click="remove(car.id)">X</button>
+                       <router-link :to="'/car/edit/'+car.id">Edit</router-link> -->
+                   </div>
         </section>
     `,
-  components: {
-    mailPreview,
-  },
-  methods: {
-    select(id) {
-      console.log(id);
-      this.$emit("selected", id);
+    components: {
+        mailPreview
     },
-  },
-};
+    methods: {
+        // remove(id) {
+        //     this.$emit('remove', id);
+        // },
+        // select(car) {
+        //     this.$emit('selected', car);
+        // }
+    },
+    computed: {}
+}

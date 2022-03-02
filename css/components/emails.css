@@ -1,0 +1,22 @@
+
+
+*{
+    margin-left: 1px;
+}
+
+.readMail:hover, .unReadMail:hover{
+    background-color:beige;
+}
+
+.readMail{
+    background-color: rgb(221, 221, 221);
+}
+
+.unReadMail {
+    background-color: aliceblue; 
+    font-weight: bold;
+}
+
+/* hr{
+    margin: 2;
+} */
