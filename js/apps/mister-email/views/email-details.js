@@ -41,7 +41,10 @@ export default {
       mailService
         .remove(this.mail.id)
         .then(() => mailService.query()
-        .then((mail) => console.log(mail)));
+        .then((mails) => {
+
+            console.log(mails)
+        }));
       //       console.log(this.mail.id)
       //       mailService.removeMail(this.mail.id).then(mail => console.log(mail))
     },
