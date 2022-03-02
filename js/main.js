@@ -1,24 +1,22 @@
-import { router } from './router.js';
-
+import { router } from "./router.js";
 
 const options = {
-    template: `
-                <app-header />
-                <user-msg />
+  template: `
+                <!-- <app-header /> -->
+                <!-- <user-msg /> -->
+                <home-page />
                 <router-view />
-                <app-footer />
+                <!-- <app-footer /> -->
 `,
-    components: {
-        bookApp,
-        appHeader,
-        appFooter,
-        userMsg
-    },
-
-}
-
+  components: {
+    homePage,
+    // bookApp,
+    // appHeader,
+    // appFooter,
+    // userMsg,
+  },
+};
 
 const app = Vue.createApp(options);
 app.use(router);
-app.mount('#app');
-
+app.mount("#app");
