@@ -1,0 +1,39 @@
+.notes-list li {
+  list-style-type: none;
+}
+
+.notes-list button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.notes-list img {
+  color: white;
+}
+
+.notes-list img:hover {
+  color: black;
+}
+
+.notes-area {
+  /* background-color: lightblue; */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.note-card {
+  width: 10rem;
+  border: 1px solid black;
+  background-color: lightyellow;
+  padding: 2rem;
+  line-break: anywhere;
+}
+
+.note-card:hover {
+  /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+  transform: scale(1.025);
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+    0 2px 15px rgba(0, 0, 0, 0.3);
+}

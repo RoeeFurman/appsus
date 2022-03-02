@@ -7,7 +7,9 @@ export default {
             <ul class="notes-area">
                 <li class="note-card" v-for="note in notes">
                     <note-preview :note="note"></note-preview>
-                    <button @click="removeNote(note.id)">Remove note</button>
+                    <button @click="removeNote(note.id)">
+                      <img src="img-notes/bx-trash.svg" alt="trash">
+                    </button>
                 </li>
             </ul>
         </section>
@@ -17,12 +19,7 @@ export default {
   },
   methods: {
     removeNote(noteId) {
-      // noteService.removeNote(noteId).then(() => {
-      //   noteService.query().then((notes) => {
-      // eventBus.emit("noteRemoved", notes);
       this.$emit("noteRemoved", noteId);
-      // });
-      // });
     },
   },
 };
