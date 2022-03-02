@@ -7,8 +7,12 @@ _createNotes();
 export const noteService = {
   query,
   get,
-  addNote,
+  // addNote,
   removeNote,
+  editNote,
+  // emailNote,
+  colorNote,
+  pinNote,
 };
 
 function _createNotes() {
@@ -22,10 +26,14 @@ function _createNotes() {
         info: {
           txt: "Fullstack Me Baby!",
         },
+        style: {
+          backgroundColor: "#00d",
+        },
       },
       {
         id: "n102",
         type: "note-img",
+        isPinned: true,
         info: {
           url: "http://some-img/me",
           title: "Bobi and Me",
@@ -37,12 +45,27 @@ function _createNotes() {
       {
         id: "n103",
         type: "note-todos",
+        isPinned: true,
         info: {
           label: "Get my stuff together",
           todos: [
             { txt: "Driving liscence", doneAt: null },
             { txt: "Coding power", doneAt: 187111111 },
           ],
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: "n104",
+        type: "note-video",
+        isPinned: true,
+        info: {
+          url: "https://www.youtube.com/watch?v=C_XkTKoDI18",
+        },
+        style: {
+          backgroundColor: "#00d",
         },
       },
     ];
@@ -59,6 +82,16 @@ function query() {
   return storageService.query(NOTES_KEY);
 }
 
-function addNote() {}
+// function addNote() {}
 
-function removeNote() {}
+function removeNote(noteId) {
+  return storageService.remove(NOTES_KEY, noteId);
+}
+
+function editNote(noteId) {}
+
+// function emailNote(noteId) {}
+
+function colorNote() {}
+
+function pinNote() {}
