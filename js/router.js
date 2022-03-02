@@ -21,16 +21,10 @@ const routes = [
   {
     path: "/mail",
     component: emailApp,
-    children: [
-      {
-        path: "details",
-        component: emailDetails,
-      },
-      //   {
-      //     path: "services",
-      //     component: aboutServices,
-      //   },
-    ],
+  },
+  {
+    path: "/mail/:mailId",
+    component: emailDetails,
   },
   {
     path: "/note",

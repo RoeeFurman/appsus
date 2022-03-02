@@ -4,9 +4,14 @@ export default {
   template: `
                 <section v-if="mail" class="mail-details">
                     <router-link class="back-link" to="/mail/"> |
-                    <router-link to="/mail/details">details</router-link> 
                         Back to Mails
                     </router-link>
+                    <h1>Mail details</h1>
+                    <span>subject: {{mail.subject}}</span><br>
+                    <span>sent at: {{mail.sentAt}}</span><br>
+                    <span>sent to: {{mail.to}}</span><br>
+                    <span>body: {{mail.body}}</span>
+
                     <br>
                 </section>
                 `,
@@ -25,18 +30,5 @@ export default {
       console.log(mail);
       this.mail = mail;
     });
-  },
-};
-
-const theData = { val: "Bobo" };
-
-export const details = {
-  template: `<section>
-        <h2>Our Team is Amazing</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla excepturi odit totam labore ipsam recusandae corrupti aperiam, cum, quis, quaerat facere repellat omnis dolorem saepe veniam ab soluta non doloribus!</p>
-        <input type="text" v-model="val" />
-    </section>`,
-  data() {
-    return { ...theData };
   },
 };
