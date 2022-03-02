@@ -38,10 +38,11 @@ export default {
   },
   methods: {
     deleteMail() {
-      mailService
-        .remove(this.mail.id)
+      mailService.remove(this.mail.id)
         .then(() => mailService.query()
         .then((mails) => {
+            eventBus.emit('updatedMails', mails)
+            this.$router.push('/mail')
 
             console.log(mails)
         }));
