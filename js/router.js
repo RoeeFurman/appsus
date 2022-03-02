@@ -3,6 +3,7 @@ import homePage from "./pages/home-page.cmp.js";
 import aboutPage from "./pages/about-page.cmp.js";
 import emailApp from "./apps/mister-email/views/email-app.cmp.js";
 import noteApp from "./apps/miss-keep/views/note-app.cmp.js";
+import emailDetails from "./apps/mister-email/views/email-details.js";
 
 const routes = [
   {
@@ -25,10 +26,10 @@ const routes = [
         path: "details",
         component: emailDetails,
       },
-      {
-        path: "services",
-        component: aboutServices,
-      },
+      //   {
+      //     path: "services",
+      //     component: aboutServices,
+      //   },
     ],
   },
   {

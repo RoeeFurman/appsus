@@ -1,8 +1,8 @@
 import mailPreview from "./mail-preview.cmp.js";
 
-export default{
-    props:['mails'],
-    template: `
+export default {
+  props: ["mails"],
+  template: `
             <h1>Mail preview</h1>
         <section class="mail-list">
             <article v-for="mail in mails">
@@ -12,13 +12,13 @@ export default{
         </article>
         </section>
     `,
-    components:{
-        mailPreview
+  components: {
+    mailPreview,
+  },
+  methods: {
+    select(id) {
+      console.log(id);
+      this.$emit("selected", id);
     },
-    methods: {
-        select(id){
-            console.log(id)
-            this.$emit('selected', id)
-        },
-    }
-}
+  },
+};
