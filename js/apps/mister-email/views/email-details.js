@@ -1,10 +1,13 @@
 import { mailService } from "../services/mail-service.js";
 import { eventBus } from "../../../services/eventBus-service.js";
+import sideFilter from "../cmps/side-filter.js"
+
 
 export default {
   template: `
                 <section v-if="mail" class="mail-details">
                     <router-link class="back-link" to="/mail/"> |
+                        <side-filter/>
                         Back to Mails
                     </router-link>
                     <h1>Mail details</h1>
@@ -20,7 +23,9 @@ export default {
                     <br>
                 </section>
                 `,
-  components: {},
+  components: {
+      sideFilter,
+  },
   data() {
     return {
       mail: null,

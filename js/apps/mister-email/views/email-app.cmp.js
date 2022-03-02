@@ -1,24 +1,39 @@
 import { mailService } from "../services/mail-service.js";
 import mailList from "../cmps/mail-list.cmp.js"
+import mailFilter from "../cmps/mail-filter.js"
+import sideFilter from "../cmps/side-filter.js"
 import { eventBus } from "../../../services/eventBus-service.js";
 
 
 export default {
     template: `
+    <div class="main-nav">
         <section class="email-app app-main">
             <h1>Mail app</h1>
-           <!-- <car-filter @filtered="setFilter" /> -->
-           <!-- <section class="" -->
-           <router-link to="/">Home</router-link>
-           <mail-list :mails="mails" @remove="removeMail"/>
-        </section>
+            <router-link to="/">Home</router-link>
+            <hr><br>
+    </div>
+                <div class="main-container">
+                    <div class="side-search">
+                    <side-filter/>
+                    </div>
+                    <div class="sec-container">
+                        <mail-filter @filtered="setFilter" />
+                        <mail-list :mails="mailsToShow" @remove="removeMail" />
+                    </div>
+                </div>
+            </section>
     `,
     components: {
-    mailList
+    mailList,
+    mailFilter,
+    sideFilter
     },
     data() {
         return {
             mails: null,
+            filterBy: null,
+
         };
     },
     created() {
@@ -43,11 +58,16 @@ export default {
         //             showErrorMsg('Error - please try again later')
         //         });
         },
-        // setFilter(filterBy) {
-        //     this.filterBy = filterBy;
-        // }
+        setFilter(filterBy) {
+            this.filterBy = filterBy;
+        }
     },
     computed: {
+        mailsToShow(){
+            if (!this.filterBy) return this.mails;
+            const regex = new RegExp(this.filterBy.subject, 'i');
+            return this.mails.filter(mail => (regex.test(mail.subject) && this.filterBy.isRead === mail.isRead));
+        }
         // carsForDisplay() {
         //     if (!this.filterBy) return this.cars;
         //     const regex = new RegExp(this.filterBy.vendor, 'i');

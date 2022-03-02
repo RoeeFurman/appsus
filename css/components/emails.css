@@ -1,22 +1,36 @@
-
-
-*{
-    margin-left: 1px;
+* {
+  margin-left: 1px;
 }
 
-.readMail:hover, .unReadMail:hover{
-    background-color:beige;
+.readMail:hover,
+.unReadMail:hover {
+  background-color: beige;
 }
 
-.readMail{
-    background-color: rgb(221, 221, 221);
+.readMail {
+  background-color: rgb(221, 221, 221);
 }
 
 .unReadMail {
-    background-color: aliceblue; 
-    font-weight: bold;
+  background-color: aliceblue;
+  font-weight: bold;
 }
 
-/* hr{
-    margin: 2;
-} */
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.side-search {
+  /* display: flex; */
+  /* flex-basis: 5; */
+  border: 1px solid black;
+}
+
+.sec-container {
+  border: 1px solid black;
+  /* display: flex;
+  flex-direction: column;
+  flex-basis: 1; */
+  width: 100%;
+}
