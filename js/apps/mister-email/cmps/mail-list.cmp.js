@@ -16,9 +16,9 @@ export default{
         mailPreview
     },
     methods: {
-        // select(id){
-        //     console.log(id)
-        //     this.$emit('selected', id)
-        // },
+        select(id){
+            console.log(id)
+            this.$emit('selected', id)
+        },
     }
 }

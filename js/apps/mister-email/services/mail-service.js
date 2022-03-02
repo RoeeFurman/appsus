@@ -22,9 +22,9 @@ function remove(bookId) {
 
 function get(bookId) {
     return storageService.get(MAILS_KEY, bookId)
-        .then(book => {
-            return _setNextPrevbookId(book)
-        })
+        // .then(book => {
+        //     return _setNextPrevbookId(book)
+        // })
 }
 
 function save(book) {
