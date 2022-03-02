@@ -1,11 +1,12 @@
 import { router } from "./router.js";
+import  homePage from "./pages/home-page.cmp.js";
 
 const options = {
   template: `
                 <!-- <app-header /> -->
                 <!-- <user-msg /> -->
-                <home-page />
                 <router-view />
+                <!-- <home-page /> -->
                 <!-- <app-footer /> -->
 `,
   components: {
