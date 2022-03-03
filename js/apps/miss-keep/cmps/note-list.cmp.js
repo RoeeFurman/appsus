@@ -5,14 +5,25 @@ export default {
   template: `
     	<section class="notes-list">
             <ul class="notes-area">
-                <li class="note-card" v-for="note in notes" :class="[note.style.backgroundColor]">
-                    <note-preview :note="note" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
-                </li>
+                <ul>
+                  <li class="note-card" v-for="note in notes" :class="[note.style.backgroundColor]" :notes="pinnedNotes">
+                      <note-preview :note="note" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+                  </li>
+                </ul>
+                <ul>
+                  <li class="note-card" v-for="note in notes" :class="[note.style.backgroundColor]" :notes="notPinnedNotes">
+                      <note-preview :note="note" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+                  </li>
+                </ul>
             </ul>
         </section>
     `,
   components: {
     notePreview,
+  },
+  data() {
+    {
+    }
   },
   methods: {
     removeNote(noteId) {
@@ -28,6 +39,15 @@ export default {
     },
     mailNote(noteId) {
       this.$emit("mailNote", noteId);
+    },
+  },
+  computed: {
+    pinnedNotes() {
+      console.log(this.notes.filter((note) => note.isPinned === true));
+    },
+
+    notPinnedNotes() {
+      console.log(this.notes.filter((note) => note.isPinned === false));
     },
   },
 };
