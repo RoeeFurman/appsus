@@ -12,6 +12,12 @@ body {
   border: none;
 }
 
+.note-add button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
 .notes-list img {
   color: white;
 }
@@ -104,4 +110,44 @@ body {
 
 .gray {
   background-color: #e8eaed;
+}
+
+.note-add {
+  color: #817e80;
+}
+
+.note-add form {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #add8e6b9;
+}
+
+.note-add input {
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.note-add .content {
+  width: 15rem;
+}
+
+.note-app .header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.note-app h1 {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.note-app .sub-heading {
+  display: flex;
+  justify-content: center;
 }

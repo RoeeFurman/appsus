@@ -8,7 +8,7 @@ _createNotes();
 export const noteService = {
   query,
   get,
-  // addNote,
+  addNote,
   removeNote,
   // editNote,
   mailNote,
@@ -24,6 +24,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-txt",
+        titleTxt: "txt note",
         isPinned: true,
         info: {
           txt: "Fullstack Me Baby!",
@@ -35,6 +36,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-img",
+        titleTxt: "img note",
         isPinned: true,
         info: {
           url: "http://some-img/me",
@@ -47,6 +49,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-todos",
+        titleTxt: "todo note",
         isPinned: true,
         info: {
           label: "Get my stuff together",
@@ -62,6 +65,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-video",
+        titleTxt: "video note",
         isPinned: true,
         info: {
           url: "https://www.youtube.com/watch?v=C_XkTKoDI18",
@@ -76,6 +80,20 @@ function _createNotes() {
   return notes;
 }
 
+function _createNote(noteData) {
+  const note = {
+    id: utilService.makeId(),
+    type: noteData.type,
+    titleTxt: noteData.titleTxt,
+    isPinned: false,
+    info: noteData.info,
+    style: {
+      backgroundColor: "",
+    },
+  };
+  return note;
+}
+
 function get(noteId) {
   return storageService.get(NOTES_KEY, noteId);
 }
@@ -84,14 +102,10 @@ function query() {
   return storageService.query(NOTES_KEY);
 }
 
-// function addNote() {}
-
-// function addNote(note) {
-//   var newNote = _createNote(note.type, note.info)
-//   gNotes.unshift(newNote)
-//   localStorage[NOTES_KEY] = JSON.stringify(gNotes);
-//   return Promise.resolve('add')
-// }
+function addNote(noteData) {
+  const newNote = _createNote(noteData);
+  return storageService.post(NOTES_KEY, newNote);
+}
 
 function removeNote(noteId) {
   return storageService.remove(NOTES_KEY, noteId);
