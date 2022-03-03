@@ -12,6 +12,7 @@
 
 /* COMPONENTS */
 
+@import "components/miss-books.css";
 @import "components/home-page.css";
 @import "components/emails.css";
 @import "components/notes.css";
