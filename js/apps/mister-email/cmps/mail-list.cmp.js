@@ -12,7 +12,7 @@ export default {
                     </div>
                    <div class="buttons">
                    <button @click="deleteMail(mail.id)"><img src="img-notes/bx-trash.svg" class="icon"></button>
-                   <button @click="toggleRead(mail.id)" >{{readButton}}</button>
+                   <button @click="toggleRead(mail.id)" ><img src="img-notes/bx-envelope.svg" class="icon"></button>
                    <button @toggleStar="toggleStar(mail.id)" ><img src="img-notes/bx-star.svg" class="icon"></button>
                     </div>
                    <!-- <button @click="toggleStar(mail.id)" ><img src="img-notes/bx-star.svg" class="icon"></button> -->

@@ -3,6 +3,9 @@
   /* padding: 1px; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+.email-app h1 {
+  margin-left: 20px;
+}
 
 .unReadMail {
   /* background-color: aliceblue; */
@@ -21,9 +24,11 @@
 }
 
 .sec-container {
-  border: 1px solid black;
-
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   width: 100%;
+  min-height: 600px;
 }
 
 li {
@@ -104,5 +109,45 @@ ul {
   max-width: 1000px;
 }
 
+.mail-details-container {
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mail-details-container td {
+  padding: 10px 10px 10px 30px;
+  border-bottom: 1px solid gray;
+}
+
+.mail-details-container tr {
+  border: 1px solid rgb(0, 0, 0);
+}
+
 .main-container-details {
+  display: flex;
+  padding: 5px;
+  min-height: 600px;
+}
+
+.side-filter-container {
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+  border-right: none;
+  /* padding: 10px; */
+}
+
+.back-link {
+  padding: 20px 100px;
+  display: inline-block;
+}
+
+.mail-details {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.delete-mail-details {
+  background: transparent;
+  border: none;
 }

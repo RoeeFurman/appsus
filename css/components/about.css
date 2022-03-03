@@ -1,0 +1,11 @@
+.about-page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  background: linear-gradient(
+    90deg,
+    rgba(70, 52, 99, 0) 0%,
+    rgba(255, 255, 255, 0.349) 0%,
+    rgba(182, 182, 182, 0.616) 35%,
+    rgb(195, 245, 255) 100%
+  );
+}

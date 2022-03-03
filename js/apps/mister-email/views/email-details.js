@@ -7,20 +7,66 @@ export default {
   template: `
                 <section v-if="mail" class="mail-details">
                   <h1>Mail details</h1>
-                  <router-link class="back-link" to="/mail/">
+                  <!-- <router-link class="back-link" to="/mail/">
                     Back to Mails
-                  </router-link>
+                    </router-link> -->
+                  <div class="main-container-details">
+                  <div class="side-filter-container">
                   <side-filter/>
-                    <span>subject: {{mail.subject}}</span><br>
-                    <span>sent at: {{mail.sentAt}}</span><br>
-                    <span>sent to: {{mail.to}}</span><br>
-                    <span>body: {{mail.body}}</span>
-                    <hr>
-                    <button @click="deleteMail"><img src="img-notes/bx-trash.svg" class="icon"></button>
-                    <router-link class="back-link" to="/mail/"> |
+                </div>
+                <div class="mail-details-container">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          Subject:
+                        </td>
+                        <td>
+                          <span> {{mail.subject}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                      Sent at:
+                        </td> 
+                        <td>
+                          <span>{{mail.sentAt}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            To:
+                          </td>
+                          <td>
+                            <span>{{mail.to}}</span><
+                           </td>
+                        </tr>
+                        <tr>
+                        <td>
+                          Body:
+                          </td>
+                          <td>
+                            <span>{{mail.body}}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                        <td>
+                          Delete mail:
+                          </td>
+                          <td>
+                            <button @click="deleteMail" class="delete-mail-details"><img src="img-notes/bx-trash.svg" class="icon"></button>
+                            <!-- <span>{{mail.body}}</span> -->
+                          </td>
+                        </tr>
+                        </table>
+                      </div>
+              </div>
+                <div class="sec-footer">
+                    <router-link class="back-link" to="/mail/">
+                      <img src="img-notes/bx-left-arrow-circle.svg" class="icon">
                         Back to Mails
                     </router-link>
-                    <br>
+              </div>
                 </section>
                 `,
   components: {
