@@ -6,7 +6,7 @@ export default {
     	<section class="notes-list">
             <ul class="notes-area">
                 <li class="note-card" v-for="note in notes" :class="[note.style.backgroundColor]">
-                    <note-preview :note="note" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+                    <note-preview :note="note" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
                 </li>
             </ul>
         </section>
@@ -22,6 +22,9 @@ export default {
     updateColor(color, noteId) {
       this.clickedColorPalette = false;
       this.$emit("updateColor", color, noteId);
+    },
+    cloneNote(noteId) {
+      this.$emit("cloneNote", noteId);
     },
   },
 };

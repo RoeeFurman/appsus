@@ -31,6 +31,9 @@ export default {
               <div class="color-container" v-if="clickedColorPalette">
                 <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
               </div>
+              <button @click="cloneNote(note.id)">
+              <img src="img-notes/bxs-duplicate.svg" alt="duplicate">
+            </button>
             </section>
       `,
   components: {
@@ -51,12 +54,15 @@ export default {
     },
 
     openPalette() {
-      this.clickedColorPalette = true;
+      this.clickedColorPalette = !this.clickedColorPalette;
     },
 
     updateColor(color, noteId) {
       this.clickedColorPalette = false;
       this.$emit("updateColor", color, noteId);
+    },
+    cloneNote(noteId) {
+      this.$emit("cloneNote", noteId);
     },
   },
 };

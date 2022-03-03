@@ -14,6 +14,7 @@ export const noteService = {
   // emailNote,
   // pinNote,
   updateNote,
+  cloneNote,
 };
 
 function _createNotes() {
@@ -21,7 +22,7 @@ function _createNotes() {
   if (!notes || !notes.length) {
     notes = [
       {
-        id: "n101",
+        id: utilService.makeId(),
         type: "note-txt",
         isPinned: true,
         info: {
@@ -32,7 +33,7 @@ function _createNotes() {
         },
       },
       {
-        id: "n102",
+        id: utilService.makeId(),
         type: "note-img",
         isPinned: true,
         info: {
@@ -44,7 +45,7 @@ function _createNotes() {
         },
       },
       {
-        id: "n103",
+        id: utilService.makeId(),
         type: "note-todos",
         isPinned: true,
         info: {
@@ -59,7 +60,7 @@ function _createNotes() {
         },
       },
       {
-        id: "n104",
+        id: utilService.makeId(),
         type: "note-video",
         isPinned: true,
         info: {
@@ -85,6 +86,13 @@ function query() {
 
 // function addNote() {}
 
+// function addNote(note) {
+//   var newNote = _createNote(note.type, note.info)
+//   gNotes.unshift(newNote)
+//   localStorage[NOTES_KEY] = JSON.stringify(gNotes);
+//   return Promise.resolve('add')
+// }
+
 function removeNote(noteId) {
   return storageService.remove(NOTES_KEY, noteId);
 }
@@ -97,4 +105,9 @@ function removeNote(noteId) {
 
 function updateNote(note) {
   return storageService.put(NOTES_KEY, note);
+}
+
+function cloneNote(note) {
+  let noteCopy = { ...note };
+  return storageService.post(NOTES_KEY, noteCopy);
 }
