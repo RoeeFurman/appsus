@@ -21,6 +21,10 @@ export default {
   props: ["note"],
   template: `
           <section class="note-preview">
+            {{note.titleTxt}}
+            <button @click="">
+              <img src="img-notes/bxs-pin.svg" alt="pin">
+            </button>
             <component :is="note.type" :info="note.info"></component>
             <button @click="removeNote(note.id)">
               <img src="img-notes/bx-trash.svg" alt="trash">

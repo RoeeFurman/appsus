@@ -60,7 +60,6 @@ export default {
       });
     },
     addNote(noteData) {
-      console.log(noteData);
       noteService.addNote(noteData).then(() => {
         this.loadNotes();
       });

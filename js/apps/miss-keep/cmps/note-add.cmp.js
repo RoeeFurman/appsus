@@ -11,7 +11,6 @@ export default {
             </section>
     
         `,
-  //   components: {},
   data() {
     return {
       newNote: {
