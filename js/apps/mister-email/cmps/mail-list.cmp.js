@@ -7,11 +7,16 @@ export default {
     template: `
         <section class="mail-list">
                 <div class="mail-inbox" v-for="mail in mails" :key="mail.id">
+                    <div class="mail-content">
                    <mail-preview :mail="mail" :mailStatusRead="status"/>
-                   <button @click="deleteMail(mail.id)">delete</button>
+                    </div>
+                   <div class="buttons">
+                   <button @click="deleteMail(mail.id)"><img src="img-notes/bx-trash.svg" class="icon"></button>
                    <button @click="toggleRead(mail.id)" >{{readButton}}</button>
-                   <button @click="toggleStar(mail.id)" >Star</button>
-                   </div>
+                   <button @toggleStar="toggleStar(mail.id)" ><img src="img-notes/bx-star.svg" class="icon"></button>
+                    </div>
+                   <!-- <button @click="toggleStar(mail.id)" ><img src="img-notes/bx-star.svg" class="icon"></button> -->
+                </div>
         </section>
     `,
     components: {

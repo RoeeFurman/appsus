@@ -11,15 +11,15 @@ export default {
         <section class="email-app app-main">
     <div class="main-nav">
             <h1>Mail app</h1>
-            <router-link to="/">Home</router-link>
-           <br>
     </div>
                 <div class="main-container">
                     <div class="side-search">
-                    <side-filter @sortBy="setSort"/>
+                        <side-filter @sortBy="setSort"/>
+                        <button v-if="!composeMode" @click="composeMode = !composeMode"><img src="img-notes/bx-message-rounded-add.svg" class="icon" title="Create New Mail"></button>
                     </div>
                     <div class="sec-container">
-                    <button v-if="!composeMode" @click="composeMode = !composeMode">compose new mail</button>
+                        <!-- <button>new mail</button> -->
+                        <!-- <button v-if="!composeMode" @click="composeMode = !composeMode"><img src="img-notes/bx-message-rounded-add.svg" class="icon" title="Create New Mail"></button> -->
                         <mail-filter @filtered="setFilter" />
                         <email-compose v-if="composeMode" @mailSent="addMail"></email-compose>
                         <mail-list v-else :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead" @toggleStar="toggleStar"/>

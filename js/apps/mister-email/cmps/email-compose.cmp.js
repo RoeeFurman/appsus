@@ -15,7 +15,7 @@ export default {
                 Date: <input v-model="review.date" type="date" id="start">
                 </div>
                  -->
-                <button @click="save">Submit</button>
+                <button @click="save"><img src="img-notes/bxs-paper-plane.svg"></button>
             </div>
         </form>
         </section>

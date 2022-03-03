@@ -1,5 +1,40 @@
+a {
+  text-decoration: none;
+  color: black;
+}
 
-a{
-    text-decoration: none;
-    color: black;
+html {
+  background-color: rgb(177, 179, 182);
+}
+
+.app-footer {
+  /* margin-top: 20px; */
+  text-align: center;
+  background-color: rgb(16, 18, 53);
+  padding: 1px;
+  color: aliceblue;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-main {
+  min-height: 83vh;
+}
+
+.app-header {
+  background-color: rgb(16, 18, 53);
+  padding: 5px;
+  /* margin-bottom: 20px; */
+  text-align: center;
+  color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo {
+  color: aliceblue;
+  font-size: 23px;
+  font-weight: 380;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 7px;
 }

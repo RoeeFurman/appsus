@@ -1,19 +1,13 @@
 * {
-  margin-left: 1px;
-}
-
-.readMail:hover,
-.unReadMail:hover {
-  background-color: beige;
-}
-
-.readMail {
-  background-color: rgb(221, 221, 221);
+  /* margin-left: 1px; */
+  /* padding: 1px; */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .unReadMail {
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   font-weight: bold;
+  /* border-bottom: 1px solid gray; */
 }
 
 .main-container {
@@ -27,11 +21,8 @@
 }
 
 .sec-container {
-  padding: 5px;
   border: 1px solid black;
-  /* display: flex;
-  flex-direction: column;
-  flex-basis: 1; */
+
   width: 100%;
 }
 
@@ -44,12 +35,43 @@ li {
 ul {
   padding: 5px;
 }
-
+/* 
 .mail-inbox {
+  border-bottom: 1px solid gray;
+} */
+
+.mail-filter {
+  padding: 15px;
+  background-color: rgb(207, 207, 207);
+  margin-bottom: 10px;
   border-bottom: 1px solid gray;
 }
 
-.mail-filter {
+.mail-list button {
+  background: transparent;
+  border: none;
+}
+
+.mail-inbox {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid gray;
-  padding: 5px;
+  padding: 5px 10px;
+}
+
+.mail-inbox:hover {
+  /* transform: scale(1.01); */
+  background-color: beige;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+    0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.side-filter li {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.main-container button {
+  background: transparent;
+  border: none;
 }

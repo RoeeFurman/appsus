@@ -3,8 +3,8 @@ export default {
         <section class="mail-filter">
             <label>
             Search By </label>
-            <span class="price-range"> <b>Subject: </b>
-            <input @input="setFilter" type="text" v-model="filterBy.subject" placeholder="Search By..."> </span>
+            <span class="price-range"> 
+            <input @input="setFilter" type="text" v-model="filterBy.subject" placeholder="Search By subject..."> </span>
             <!-- <input type="checkbox" @input="setFilter" v-model="filterBy.isRead" :value=mailStatus /> Read -->
             <!-- <input type="checkbox" @input="setFilter" value=false v-model="!filterBy.isRead" /> Unread -->
 

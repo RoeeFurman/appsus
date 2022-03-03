@@ -16,7 +16,7 @@ export default {
                     <span>sent to: {{mail.to}}</span><br>
                     <span>body: {{mail.body}}</span>
                     <hr>
-                    <button @click="deleteMail">delete mail</button>
+                    <button @click="deleteMail"><img src="img-notes/bx-trash.svg" class="icon"></button>
                     <router-link class="back-link" to="/mail/"> |
                         Back to Mails
                     </router-link>

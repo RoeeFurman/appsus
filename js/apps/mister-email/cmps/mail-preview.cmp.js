@@ -5,9 +5,11 @@ export default {
     props: ['mail'],
     template: `
             <section class="mail-preview">
-            <router-link :to="'/mail/'+mail.id" @click.prevent>
-                <div :class="displayReadUnreadClass">subject: {{mail.subject}} to: {{mail.to}} sent-at:{{sentAtToDisplay}}</div>
+                <div :class="displayReadUnreadClass" :class="displayStar">
+                    <router-link :to="'/mail/'+mail.id" @click.prevent>
+                    SUBJECT: {{mail.subject}} TO: {{mail.to}} SENT-AT:{{sentAtToDisplay}}
                 </router-link>
+                </div>
                 <!-- <button @click="deleteMail">Delete</button> -->
             </section>
     `,
@@ -20,11 +22,17 @@ export default {
             if(this.mail.isRead) return "readMail"
             else return "unReadMail"
         },
+        displayStar(){
+            return "starred"
+        },
         sentAtToDisplay(){
           let time = new Date(this.mail.sentAt)
           return time.toISOString().slice(0,10)
+        },
+        toggleStar(id){
+            console.log(id)
+            this.$emit('toggleStar', id)
         }
-
 
     },
     methods:{
