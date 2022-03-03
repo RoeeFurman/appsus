@@ -2,13 +2,14 @@ import { mailService } from "../services/mail-service.js";
 import mailList from "../cmps/mail-list.cmp.js"
 import mailFilter from "../cmps/mail-filter.js"
 import sideFilter from "../cmps/side-filter.js"
+import emailCompose from "../cmps/email-compose.cmp.js"
 import { eventBus } from "../../../services/eventBus-service.js";
 
 
 export default {
     template: `
-    <div class="main-nav">
         <section class="email-app app-main">
+    <div class="main-nav">
             <h1>Mail app</h1>
             <router-link to="/">Home</router-link>
            <br>
@@ -18,8 +19,10 @@ export default {
                     <side-filter @sortBy="setSort"/>
                     </div>
                     <div class="sec-container">
+                    <button v-if="!composeMode" @click="composeMode = !composeMode">compose new mail</button>
                         <mail-filter @filtered="setFilter" />
-                        <mail-list :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead"/>
+                        <email-compose v-if="composeMode" @mailSent="addMail"></email-compose>
+                        <mail-list v-else :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead" @toggleStar="toggleStar"/>
                     </div>
                 </div>
             </section>
@@ -27,7 +30,8 @@ export default {
     components: {
     mailList,
     mailFilter,
-    sideFilter
+    sideFilter,
+    emailCompose
     },
     data() {
         return {
@@ -36,6 +40,7 @@ export default {
                 subject: '',
             },
             sortBy: null,
+            composeMode: false,
 
         };
     },
@@ -80,9 +85,28 @@ export default {
                         this.mails = mails
                     })
                 })
-
             })
     },
+        toggleStar(id){
+            console.log(id)
+            mailService.get(id)
+            .then((mail)=>{
+                console.log(mail)
+                mail.isStarred = !mail.isStarred
+                mailService.save(mail).then(() => {
+                    mailService.query().then(mails => {
+                        console.log(mails)
+                        this.mails = mails
+                    })
+                })
+            })
+    },
+        addMail(mail){
+            this.mails.unshift(mail);
+
+            this.composeMode = false;
+
+    }
 },
     computed: {
         mailsToShow(){

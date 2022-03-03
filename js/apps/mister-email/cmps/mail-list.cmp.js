@@ -10,6 +10,7 @@ export default {
                    <mail-preview :mail="mail" :mailStatusRead="status"/>
                    <button @click="deleteMail(mail.id)">delete</button>
                    <button @click="toggleRead(mail.id)" >{{readButton}}</button>
+                   <button @click="toggleStar(mail.id)" >Star</button>
                    </div>
         </section>
     `,
@@ -31,6 +32,10 @@ export default {
         toggleRead(id){
             console.log(id)
             this.$emit('toggleRead', id)
+        },
+        toggleStar(id){
+            console.log(id)
+            this.$emit('toggleStar', id)
         }
         // remove(id) {
         //     this.$emit('remove', id);

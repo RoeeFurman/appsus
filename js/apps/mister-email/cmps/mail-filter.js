@@ -2,11 +2,11 @@ export default {
     template: `
         <section class="mail-filter">
             <label>
-            Filter By </label>
+            Search By </label>
             <span class="price-range"> <b>Subject: </b>
             <input @input="setFilter" type="text" v-model="filterBy.subject" placeholder="Search By..."> </span>
-            <input type="checkbox" @input="setFilter" v-model="filterBy.isRead" :value=mailStatus /> Read
-            <input type="checkbox" @input="setFilter" value=false v-model="!filterBy.isRead" /> Unread
+            <!-- <input type="checkbox" @input="setFilter" v-model="filterBy.isRead" :value=mailStatus /> Read -->
+            <!-- <input type="checkbox" @input="setFilter" value=false v-model="!filterBy.isRead" /> Unread -->
 
 
             <!-- <span class="price-range"> <b>Price:</b> 0 -->

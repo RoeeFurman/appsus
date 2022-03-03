@@ -9,6 +9,7 @@ export const mailService = {
     remove,
     get,
     save,
+    addMail,
     // removeMail
 };
 
@@ -54,6 +55,11 @@ function save(mail) {
     else return storageService.post(MAILS_KEY, mail);
 }
 
+function addMail(newMail){
+    save(newMail).then((mails)=> console.log(mails))
+}
+
+
 function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY);
     if (!mails || !mails.length) {
@@ -64,7 +70,8 @@ function _createMails() {
                 body: 'Would love to catch up sometimes',
                 isRead: false, 
                 isSent: false, 
-                isDraft: false, 
+                isDraft: false,
+                isStarred: true,
                 isTrash: true,
                 sentAt: 1551133930594,
                 to: 'momo@momo.com'
@@ -75,6 +82,7 @@ function _createMails() {
                 body: 'i Would not love to catch up sometimes',
                 isDraft: false, 
                 isRead: true, 
+                isStarred: true,
                 isSent: true, 
                 isTrash: true,
                 sentAt: 1551133930599,
@@ -86,6 +94,7 @@ function _createMails() {
                 body: 'oh actually I Would love to catch up sometimes',
                 isSent: true, 
                 isDraft: false, 
+                isStarred: true,
                 isRead: false, 
                 isTrash: false,
                 sentAt: 1551133930598,
@@ -96,6 +105,7 @@ function _createMails() {
                 subject: 'Sprint 3!',
                 body: 'oh actually I Would love to catch up sometimes',
                 isSent: true, 
+                isStarred: true,
                 isDraft: false, 
                 isRead: true, 
                 isTrash: false,
@@ -109,6 +119,7 @@ function _createMails() {
                 isSent: true, 
                 isDraft: false, 
                 isRead: false, 
+                isStarred: true,
                 isTrash: false,
                 sentAt: 1551133930596,
                 to: 'go@gogo.com'
