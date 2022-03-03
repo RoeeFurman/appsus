@@ -49,9 +49,9 @@ function get(bookId) {
         // })
 }
 
-function save(book) {
-    if (book.id) return storageService.put(MAILS_KEY, book);
-    else return storageService.post(MAILS_KEY, book);
+function save(mail) {
+    if (mail.id) return storageService.put(MAILS_KEY, mail);
+    else return storageService.post(MAILS_KEY, mail);
 }
 
 function _createMails() {
@@ -59,29 +59,60 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails = [
             {
-                id: 'e101',
+                id: utilService.makeId(),
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false, 
+                isSent: false, 
+                isDraft: false, 
+                isTrash: true,
                 sentAt: 1551133930594,
                 to: 'momo@momo.com'
             },
             {
-                id: 'e102',
+                id: utilService.makeId(),
                 subject: 'i dont Miss you!',
                 body: 'i Would not love to catch up sometimes',
+                isDraft: false, 
                 isRead: true, 
-                sentAt: 1551133930594,
+                isSent: true, 
+                isTrash: true,
+                sentAt: 1551133930599,
                 to: 'bobo@momo.com'
             },
             {
-                id: 'e103',
+                id: utilService.makeId(),
                 subject: 'Miss you!',
                 body: 'oh actually I Would love to catch up sometimes',
+                isSent: true, 
+                isDraft: false, 
                 isRead: false, 
-                sentAt: 1551133930594,
+                isTrash: false,
+                sentAt: 1551133930598,
                 to: 'lolo@momo.com'
-            }
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Sprint 3!',
+                body: 'oh actually I Would love to catch up sometimes',
+                isSent: true, 
+                isDraft: false, 
+                isRead: true, 
+                isTrash: false,
+                sentAt: 1551133930597,
+                to: 'go@gogo.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Sprint 3 we kick your ass!',
+                body: 'oh actually I Would love to catch up sometimes',
+                isSent: true, 
+                isDraft: false, 
+                isRead: false, 
+                isTrash: false,
+                sentAt: 1551133930596,
+                to: 'go@gogo.com'
+            },
         ];
         utilService.saveToStorage(MAILS_KEY, mails)
     }

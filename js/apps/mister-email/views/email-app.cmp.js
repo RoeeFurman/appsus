@@ -11,15 +11,15 @@ export default {
         <section class="email-app app-main">
             <h1>Mail app</h1>
             <router-link to="/">Home</router-link>
-            <hr><br>
+           <br>
     </div>
                 <div class="main-container">
                     <div class="side-search">
-                    <side-filter/>
+                    <side-filter @sortBy="setSort"/>
                     </div>
                     <div class="sec-container">
                         <mail-filter @filtered="setFilter" />
-                        <mail-list :mails="mailsToShow" @remove="removeMail" />
+                        <mail-list :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead"/>
                     </div>
                 </div>
             </section>
@@ -32,12 +32,14 @@ export default {
     data() {
         return {
             mails: null,
-            filterBy: null,
+            filterBy: {
+                subject: '',
+            },
+            sortBy: null,
 
         };
     },
     created() {
-        this.unsubscribe = eventBus.on('updatedMails', this.updateMails);
         mailService.query()
             .then(mails => this.mails = mails);
     },
@@ -60,21 +62,41 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
-        }
+        },
+        setSort(sortBy) {
+            console.log(sortBy)
+            this.sortBy = sortBy;
+            return this
+        },
+        toggleRead(id){
+            console.log(id)
+            mailService.get(id)
+            .then((mail)=>{
+                console.log(mail)
+                mail.isRead = !mail.isRead
+                mailService.save(mail).then(() => {
+                    mailService.query().then(mails => {
+                        console.log(mails)
+                        this.mails = mails
+                    })
+                })
+
+            })
     },
+},
     computed: {
         mailsToShow(){
             if (!this.filterBy) return this.mails;
+            console.log(this.sortBy)
             const regex = new RegExp(this.filterBy.subject, 'i');
-            return this.mails.filter(mail => (regex.test(mail.subject) && this.filterBy.isRead === mail.isRead));
+            if(!this.sortBy) return this.mails.filter(mail => (regex.test(mail.subject)));
+            else if(this.sortBy === 'read') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isRead))
+            else if(this.sortBy === 'unread') return this.mails.filter(mail => (regex.test(mail.subject) && !mail.isRead))
+            else if(this.sortBy === 'trash') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isTrash))
+            else if(this.sortBy === 'sent') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isSent))
+            else if(this.sortBy === 'draft') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isDraft))
+            }
         }
-        // carsForDisplay() {
-        //     if (!this.filterBy) return this.cars;
-        //     const regex = new RegExp(this.filterBy.vendor, 'i');
-        //     return this.cars.filter(car => regex.test(car.vendor));
-        },
-        unmounted() {
-            this.unsubscribe();
-        }
+
     // },
 };

@@ -6,7 +6,7 @@ export default {
     template: `
             <section class="mail-preview">
             <router-link :to="'/mail/'+mail.id" @click.prevent>
-                <div :class="displayReadUnreadClass">subject: {{mail.subject}} to: {{mail.to}}<hr></div>
+                <div :class="displayReadUnreadClass">subject: {{mail.subject}} to: {{mail.to}}</div>
                 </router-link>
                 <!-- <button @click="deleteMail">Delete</button> -->
             </section>
