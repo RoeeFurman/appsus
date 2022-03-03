@@ -22,23 +22,3 @@ function makeId(length = 8) {
   }
   return txt;
 }
-
-function getColors() {
-  return [
-    "aliceblue",
-    "aquamarine",
-    "lavender",
-    "lavenderblush",
-    "lightgoldenrodyellow",
-    "lightgreen",
-    "mistyrose",
-    "peachpuff",
-    "plum",
-    "lightBlue",
-    "wheat",
-    "beige",
-    "crimson",
-    "sandybrown",
-    "salmon",
-  ];
-}

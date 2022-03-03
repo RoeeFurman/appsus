@@ -10,10 +10,10 @@ export const noteService = {
   get,
   // addNote,
   removeNote,
-  editNote,
+  // editNote,
   // emailNote,
-  colorNote,
-  pinNote,
+  // pinNote,
+  updateNote,
 };
 
 function _createNotes() {
@@ -28,7 +28,7 @@ function _createNotes() {
           txt: "Fullstack Me Baby!",
         },
         style: {
-          backgroundColor: "#00d",
+          backgroundColor: "",
         },
       },
       {
@@ -40,7 +40,7 @@ function _createNotes() {
           title: "Bobi and Me",
         },
         style: {
-          backgroundColor: "#00d",
+          backgroundColor: "",
         },
       },
       {
@@ -55,7 +55,7 @@ function _createNotes() {
           ],
         },
         style: {
-          backgroundColor: "#00d",
+          backgroundColor: "",
         },
       },
       {
@@ -66,7 +66,7 @@ function _createNotes() {
           url: "https://www.youtube.com/watch?v=C_XkTKoDI18",
         },
         style: {
-          backgroundColor: "#00d",
+          backgroundColor: "",
         },
       },
     ];
@@ -89,12 +89,12 @@ function removeNote(noteId) {
   return storageService.remove(NOTES_KEY, noteId);
 }
 
-function editNote(noteId) {}
+// function editNote(noteId) {}
 
 // function emailNote(noteId) {}
 
-function colorNote(noteId) {
-  return storageService.get(NOTES_KEY, noteId);
-}
+// function pinNote() {}
 
-function pinNote() {}
+function updateNote(note) {
+  return storageService.put(NOTES_KEY, note);
+}

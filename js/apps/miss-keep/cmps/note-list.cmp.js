@@ -5,14 +5,8 @@ export default {
   template: `
     	<section class="notes-list">
             <ul class="notes-area">
-                <li class="note-card" v-for="note in notes">
-                    <note-preview :note="note"></note-preview>
-                    <button @click="removeNote(note.id)">
-                      <img src="img-notes/bx-trash.svg" alt="trash">
-                    </button>
-                    <button @click="colorNote(note.id)">
-                      <img src="img-notes/bxs-palette.svg" alt="palette">
-                    </button>
+                <li class="note-card" v-for="note in notes" :class="[note.style.backgroundColor]">
+                    <note-preview :note="note" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
                 </li>
             </ul>
         </section>
@@ -20,12 +14,14 @@ export default {
   components: {
     notePreview,
   },
-  data() {
-    return {};
-  },
   methods: {
     removeNote(noteId) {
       this.$emit("noteRemoved", noteId);
+    },
+
+    updateColor(color, noteId) {
+      this.clickedColorPalette = false;
+      this.$emit("updateColor", color, noteId);
     },
   },
 };

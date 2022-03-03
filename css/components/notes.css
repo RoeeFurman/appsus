@@ -32,11 +32,11 @@ body {
   background-color: lightyellow;
   padding: 2rem;
   line-break: anywhere;
+  transition: all 200ms;
 }
 
 .note-card:hover {
-  /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
-  transform: scale(1.025);
+  transform: scale(1.05);
   box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
     0 2px 15px rgba(0, 0, 0, 0.3);
 }
@@ -44,10 +44,11 @@ body {
 /* //color modal // */
 
 .color-container {
-  width: 135px;
+  width: 290px;
   z-index: 6;
   background: #fff;
   position: absolute;
+  transform: translate(-23%, 0);
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 32%);
   border-radius: 6px;
   cursor: pointer;
@@ -60,59 +61,46 @@ body {
   margin: 3px;
 }
 
-.aliceblue {
-  background-color: #f0f8ff;
+.red {
+  background-color: #f28b82;
 }
 
-.aquamarine {
-  background-color: #7fffd4;
+.orange {
+  background-color: #fabc05;
 }
 
-.lavender {
-  background-color: lavender;
+.yellow {
+  background-color: #fff375;
 }
 
-.lavenderblush {
-  background-color: lavenderblush;
+.green {
+  background-color: #cbff90;
 }
 
-.lightgoldenrodyellow {
-  background-color: lightgoldenrodyellow;
-}
-.lightgreen {
-  background-color: lightgreen;
-}
-.mistyrose {
-  background-color: mistyrose;
-}
-.peachpuff {
-  background-color: peachpuff;
+.teal {
+  background-color: #a7ffeb;
 }
 
-.plum {
-  background-color: plum;
+.blue {
+  background-color: #caf0f8;
 }
 
-.lightBlue {
-  background-color: #6cf;
+.darkBlue {
+  background-color: #aecbfa;
 }
 
-.wheat {
-  background-color: wheat;
+.purple {
+  background-color: #d7aefb;
 }
 
-.beige {
-  background-color: beige;
+.pink {
+  background-color: #fdcfe8;
 }
 
-.crimson {
-  background-color: crimson;
+.brown {
+  background-color: #e6c9a8;
 }
 
-.sandybrown {
-  background-color: sandybrown;
-}
-
-.salmon {
-  background-color: salmon;
+.gray {
+  background-color: #e8eaed;
 }

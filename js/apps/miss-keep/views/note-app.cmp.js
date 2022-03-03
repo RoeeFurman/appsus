@@ -7,7 +7,7 @@ export default {
               <section class="note-app">
                   <h1>Notes</h1>
                   <router-link to="/" class="home-go">Home</router-link>
-                  <note-list @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
+                  <note-list @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
   
       `,
@@ -34,6 +34,13 @@ export default {
         const idx = this.notes.findIndex((note) => note.id === id);
         this.notes.splice(idx, 1);
       });
+    },
+
+    updateColor(color, id) {
+      const note = this.notes.find((note) => note.id === id);
+      console.log(note);
+      note.style.backgroundColor = color;
+      noteService.updateNote(note);
     },
   },
 
