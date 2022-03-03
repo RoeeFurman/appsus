@@ -7,7 +7,7 @@ export default {
               <section class="note-app">
                   <h1>Notes</h1>
                   <router-link to="/" class="home-go">Home</router-link>
-                  <note-list  @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
+                  <note-list @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
   
       `,
@@ -44,6 +44,14 @@ export default {
     cloneNote(noteId) {
       noteService.get(noteId).then((note) => {
         noteService.cloneNote(note).then(() => this.loadNotes());
+      });
+    },
+    mailNote(noteId) {
+      noteService.get(noteId).then((note) => {
+        console.log(note);
+        const content = note.info.txt;
+        console.log(content);
+        eventBus.emit("sentContent", content);
       });
     },
   },

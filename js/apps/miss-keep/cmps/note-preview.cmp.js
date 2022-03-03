@@ -34,6 +34,9 @@ export default {
               <button @click="cloneNote(note.id)">
               <img src="img-notes/bxs-duplicate.svg" alt="duplicate">
             </button>
+              <button @click="mailNote(note.id)">
+              <img src="img-notes/bxs-paper-plane.svg" alt="paper-plane">
+            </button>
             </section>
       `,
   components: {
@@ -63,6 +66,9 @@ export default {
     },
     cloneNote(noteId) {
       this.$emit("cloneNote", noteId);
+    },
+    mailNote(noteId) {
+      this.$emit("mailNote", noteId);
     },
   },
 };
