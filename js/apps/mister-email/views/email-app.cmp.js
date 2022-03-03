@@ -31,7 +31,8 @@ export default {
     mailList,
     mailFilter,
     sideFilter,
-    emailCompose
+    emailCompose,
+    eventBus
     },
     data() {
         return {
@@ -47,6 +48,7 @@ export default {
     created() {
         mailService.query()
             .then(mails => this.mails = mails);
+        eventBus.on('sentContent',this.contentReceived)
     },
     methods: {
         updateMails(mails){
@@ -64,6 +66,9 @@ export default {
         //             console.error(err);
         //             showErrorMsg('Error - please try again later')
         //         });
+        },
+        contentReceived(content){
+            console.log(content)
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
