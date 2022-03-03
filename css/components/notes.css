@@ -18,16 +18,8 @@ body {
   border: none;
 }
 
-.notes-list img {
-  color: white;
-}
-
 .notes-list h2 {
   text-align: center;
-}
-
-.notes-list img:hover {
-  color: black;
 }
 
 .notes-area {
@@ -161,8 +153,17 @@ body {
 .note-preview header {
   padding-top: 0.5rem;
   padding-left: 0.5rem;
+  padding-right: 0.5rem;
   display: flex;
   justify-content: space-between;
+}
+.note-preview header button {
+  padding: 0.5em;
+}
+
+.note-preview header button:hover {
+  background: rgb(145 145 145 / 20%);
+  border-radius: 50%;
 }
 
 .note-preview .mainCmp {
@@ -170,5 +171,23 @@ body {
 }
 
 .note-preview .actions {
+  display: flex;
+  justify-content: center;
   padding-bottom: 0.5rem;
+}
+.note-preview .actions button:hover {
+  background: rgb(145 145 145 / 20%);
+  border-radius: 50%;
+}
+
+.note-preview .actions button {
+  padding: 0.5em;
+}
+
+.note-card button {
+  opacity: 0;
+}
+
+.note-card:hover button {
+  opacity: 1;
 }

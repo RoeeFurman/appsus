@@ -24,7 +24,7 @@ export default {
             <header>
               {{note.titleTxt}}
               <button @click="pinNote(note.id)">
-                <img src="img-notes/bxs-pin.svg" alt="pin">
+                <img src="img-notes/bx-pin2.svg" alt="pin">
               </button>
             </header>
             <div class="mainCmp">
@@ -35,16 +35,16 @@ export default {
                   <img src="img-notes/bx-trash.svg" alt="trash">
                 </button>
                 <button @click="openPalette">
-                  <img src="img-notes/bxs-palette.svg" alt="palette">
+                  <img src="img-notes/bx-palette2.svg" alt="palette">
                 </button>
                   <div class="color-container" v-if="clickedColorPalette">
                     <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
                   </div>
                   <button @click="cloneNote(note.id)">
-                  <img src="img-notes/bxs-duplicate.svg" alt="duplicate">
+                  <img src="img-notes/bx-copy2.svg" alt="duplicate">
                 </button>
                   <button @click="mailNote(note.id)">
-                  <img src="img-notes/bxs-paper-plane.svg" alt="paper-plane">
+                  <img src="img-notes/bx-paper-plane2.svg" alt="paper-plane">
                 </button>
             </div>
             </section>
