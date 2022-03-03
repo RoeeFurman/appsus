@@ -4,26 +4,22 @@ export default {
   props: ["notes"],
   template: `
     	<section class="notes-list">
+        <h2>PINNED</h2>
             <ul class="notes-area">
-                <ul>
-                  <li class="note-card" v-for="note in notes" :class="[note.style.backgroundColor]" :notes="pinnedNotes">
-                      <note-preview :note="note" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+                  <li class="note-card" v-for="note in pinnedNotes" :class="[note.style.backgroundColor]">
+                      <note-preview :note="note" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+                  </li>  
+            </ul> 
+            <h2>OTHERS</h2>
+            <ul class="notes-area">
+                  <li class="note-card" v-for="note in notPinnedNotes" :class="[note.style.backgroundColor]">
+                      <note-preview :note="note" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
                   </li>
-                </ul>
-                <ul>
-                  <li class="note-card" v-for="note in notes" :class="[note.style.backgroundColor]" :notes="notPinnedNotes">
-                      <note-preview :note="note" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
-                  </li>
-                </ul>
             </ul>
         </section>
     `,
   components: {
     notePreview,
-  },
-  data() {
-    {
-    }
   },
   methods: {
     removeNote(noteId) {
@@ -40,14 +36,17 @@ export default {
     mailNote(noteId) {
       this.$emit("mailNote", noteId);
     },
+    pinNote(noteId) {
+      this.$emit("pinNote", noteId);
+    },
   },
   computed: {
     pinnedNotes() {
-      console.log(this.notes.filter((note) => note.isPinned === true));
+      return this.notes.filter((note) => note.isPinned === true);
     },
 
     notPinnedNotes() {
-      console.log(this.notes.filter((note) => note.isPinned === false));
+      return this.notes.filter((note) => note.isPinned === false);
     },
   },
 };

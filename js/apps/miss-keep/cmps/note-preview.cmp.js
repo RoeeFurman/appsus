@@ -21,26 +21,32 @@ export default {
   props: ["note"],
   template: `
           <section class="note-preview">
-            {{note.titleTxt}}
-            <button @click="">
-              <img src="img-notes/bxs-pin.svg" alt="pin">
-            </button>
-            <component :is="note.type" :info="note.info"></component>
-            <button @click="removeNote(note.id)">
-              <img src="img-notes/bx-trash.svg" alt="trash">
-            </button>
-            <button @click="openPalette">
-              <img src="img-notes/bxs-palette.svg" alt="palette">
-            </button>
-              <div class="color-container" v-if="clickedColorPalette">
-                <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
-              </div>
-              <button @click="cloneNote(note.id)">
-              <img src="img-notes/bxs-duplicate.svg" alt="duplicate">
-            </button>
-              <button @click="mailNote(note.id)">
-              <img src="img-notes/bxs-paper-plane.svg" alt="paper-plane">
-            </button>
+            <header>
+              {{note.titleTxt}}
+              <button @click="pinNote(note.id)">
+                <img src="img-notes/bxs-pin.svg" alt="pin">
+              </button>
+            </header>
+            <div class="mainCmp">
+              <component :is="note.type" :info="note.info"></component>
+            </div>
+            <div class="actions">
+                <button @click="removeNote(note.id)">
+                  <img src="img-notes/bx-trash.svg" alt="trash">
+                </button>
+                <button @click="openPalette">
+                  <img src="img-notes/bxs-palette.svg" alt="palette">
+                </button>
+                  <div class="color-container" v-if="clickedColorPalette">
+                    <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
+                  </div>
+                  <button @click="cloneNote(note.id)">
+                  <img src="img-notes/bxs-duplicate.svg" alt="duplicate">
+                </button>
+                  <button @click="mailNote(note.id)">
+                  <img src="img-notes/bxs-paper-plane.svg" alt="paper-plane">
+                </button>
+            </div>
             </section>
       `,
   components: {
@@ -73,6 +79,9 @@ export default {
     },
     mailNote(noteId) {
       this.$emit("mailNote", noteId);
+    },
+    pinNote(noteId) {
+      this.$emit("pinNote", noteId);
     },
   },
 };

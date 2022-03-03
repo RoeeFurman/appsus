@@ -10,9 +10,8 @@ export default {
                     <h1>Miss Keeper</h1>
                     <p class="sub-heading">You do you, and we will do the rest</p>
                   </div>
-                  <router-link to="/" class="home-go">Home</router-link>
                   <note-add @addNote="addNote"></note-add>
-                  <note-list @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
+                  <note-list @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
   
       `,
@@ -22,7 +21,7 @@ export default {
   },
   data() {
     return {
-      notes: null,
+      notes: [],
     };
   },
   created() {
@@ -61,6 +60,13 @@ export default {
     },
     addNote(noteData) {
       noteService.addNote(noteData).then(() => {
+        this.loadNotes();
+      });
+    },
+    pinNote(noteId) {
+      const note = this.notes.find((note) => note.id === noteId);
+      note.isPinned = !note.isPinned;
+      noteService.updateNote(note).then(() => {
         this.loadNotes();
       });
     },

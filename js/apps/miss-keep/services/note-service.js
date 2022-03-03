@@ -12,7 +12,6 @@ export const noteService = {
   removeNote,
   // editNote,
   mailNote,
-  // pinNote,
   updateNote,
   cloneNote,
 };
@@ -116,8 +115,6 @@ function removeNote(noteId) {
 function mailNote(noteId) {
   return storageService.get(noteId);
 }
-
-// function pinNote() {}
 
 function updateNote(note) {
   return storageService.put(NOTES_KEY, note);
