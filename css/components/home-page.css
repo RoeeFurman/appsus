@@ -24,6 +24,7 @@
 }
 
 .home-page-icon a {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: aliceblue;
   display: inline-block;
   line-height: 100px;

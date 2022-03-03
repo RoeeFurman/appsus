@@ -6,11 +6,11 @@ import sideFilter from "../cmps/side-filter.js"
 export default {
   template: `
                 <section v-if="mail" class="mail-details">
-                    <router-link class="back-link" to="/mail/"> |
-                        <side-filter/>
-                        Back to Mails
-                    </router-link>
-                    <h1>Mail details</h1>
+                  <h1>Mail details</h1>
+                  <router-link class="back-link" to="/mail/">
+                    Back to Mails
+                  </router-link>
+                  <side-filter/>
                     <span>subject: {{mail.subject}}</span><br>
                     <span>sent at: {{mail.sentAt}}</span><br>
                     <span>sent to: {{mail.to}}</span><br>

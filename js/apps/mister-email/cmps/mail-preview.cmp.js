@@ -4,11 +4,25 @@ import {mailService} from "../services/mail-service.js"
 export default {
     props: ['mail'],
     template: `
-            <section class="mail-preview">
+            <section >
                 <div :class="displayReadUnreadClass" :class="displayStar">
-                    <router-link :to="'/mail/'+mail.id" @click.prevent>
-                    SUBJECT: {{mail.subject}} TO: {{mail.to}} SENT-AT:{{sentAtToDisplay}}
-                </router-link>
+                    <table class="preview-table">
+                        <router-link :to="'/mail/'+mail.id" @click.prevent>
+                        <tbody >
+                            <tr>
+                                <td class="to">
+                                    TO: {{mail.to}} 
+                                </td>
+                                <td class="subject">
+                                    SUBJECT: {{mail.subject}} 
+                                </td>
+                                <td>
+                                    SENT-AT:{{sentAtToDisplay}}
+                                </td>
+                                </tr>
+                                </tbody>
+                            </router-link>
+                                <table>
                 </div>
                 <!-- <button @click="deleteMail">Delete</button> -->
             </section>

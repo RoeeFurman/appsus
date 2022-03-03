@@ -1,4 +1,4 @@
-* {
+.email-app * {
   /* margin-left: 1px; */
   /* padding: 1px; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -74,4 +74,35 @@ ul {
 .main-container button {
   background: transparent;
   border: none;
+}
+
+.email-compose {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px 30px;
+}
+
+.email-compose img {
+  padding: 30px 30px 0px;
+}
+
+.email-compose input {
+  border-radius: 5px;
+  height: 2em;
+}
+
+.to {
+  min-width: 250px;
+  /* font-size: 1em; */
+}
+
+.subject {
+  min-width: 450px;
+}
+
+.preview-table {
+  max-width: 1000px;
+}
+
+.main-container-details {
 }
