@@ -29,7 +29,7 @@ function _createNotes() {
           txt: "Fullstack Me Baby!",
         },
         style: {
-          backgroundColor: "",
+          backgroundColor: "pink",
         },
       },
       {
@@ -41,7 +41,7 @@ function _createNotes() {
           url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgnL-6fb5PhgkCkH3odiqgPmhqoWm6HeRjwQ&usqp=CAU",
         },
         style: {
-          backgroundColor: "",
+          backgroundColor: "brown",
         },
       },
       {
@@ -51,12 +51,46 @@ function _createNotes() {
         isPinned: true,
         info: {
           todos: [
-            { txt: "Driving liscence", isDone: false },
-            { txt: "Coding power", isDone: true },
+            {
+              txt: "Do not cry when console log prints undefined",
+              isDone: false,
+            },
+            {
+              txt: "Do not cry when you fix a bug but then 10000 more appear",
+              isDone: true,
+            },
+            {
+              txt: "Do not cry when it is ten minutes to submission and your project is far from being done",
+              isDone: true,
+            },
           ],
         },
         style: {
-          backgroundColor: "",
+          backgroundColor: "orange",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-img",
+        titleTxt: "img note",
+        isPinned: false,
+        info: {
+          url: "https://addons-media.operacdn.com/media/CACHE/images/themes/45/123745/1.0-rev1/images/d43cd5fe-8407-46bb-858f-54d825dead48/c31dc78b6602cb4bf0a8d2b93385e5a2.jpg",
+        },
+        style: {
+          backgroundColor: "green",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-txt",
+        titleTxt: "txt note",
+        isPinned: false,
+        info: {
+          txt: "Learn Vue they said, it will be fun they said.",
+        },
+        style: {
+          backgroundColor: "blue",
         },
       },
       {
@@ -68,7 +102,19 @@ function _createNotes() {
           url: "https://www.youtube.com/embed/XHNHq1mC0VQ",
         },
         style: {
-          backgroundColor: "",
+          backgroundColor: "red",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-txt",
+        titleTxt: "txt note",
+        isPinned: false,
+        info: {
+          txt: "Things aren’t always #000000 and #FFFFFF",
+        },
+        style: {
+          backgroundColor: "darkBlue",
         },
       },
     ];

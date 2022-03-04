@@ -1,25 +1,28 @@
 export default {
   template: `
-            <section class="note-add">
-                <form @submit="addNote">
-                    <input type="text" class="title" placeholder="Note title" v-model="titleTxt">
-                    <input type="text" class="content" placeholder="Whats on your mind?" v-model="info">
-                    <div class="add-actions">
-                    <button @click="setType('note-img')">
-                        <img src="img-notes/bx-image.svg" alt="image">
-                    </button>
-                    <button @click="setType('note-video')">
-                        <img src="img-notes/bxl-youtube.svg" alt="youtube">
-                    </button>
-                    <button @click="setType('note-todos')">
-                        <img src="img-notes/bx-list-ul.svg" alt="list">
-                    </button>
-                    </div>
-                    <button type="submit">
-                        <img src="img-notes/bx-plus.svg" alt="plus">
-                    </button>
-                </form>
-            </section>
+          <section class="note-add">
+              <form @submit="addNote">
+                  <input type="text" class="title" placeholder="Note title" v-model="titleTxt">
+                  <input type="text" class="content" :placeholder="placeholderByType" v-model="info">
+                  <div class="add-actions">
+                  <button type="button" @click="setType('note-txt')">
+                      <img src="img-notes/bx-text.svg" alt="text">
+                  </button>
+                  <button type="button" @click="setType('note-img')">
+                      <img src="img-notes/bx-image.svg" alt="image">
+                  </button>
+                  <button type="button" @click="setType('note-video')">
+                      <img src="img-notes/bxl-youtube.svg" alt="youtube">
+                  </button>
+                  <button type="button" @click="setType('note-todos')">
+                      <img src="img-notes/bx-list-ul.svg" alt="list">
+                  </button>
+                  </div>
+                  <button type="submit">
+                      <img src="img-notes/bx-plus.svg" alt="plus">
+                  </button>
+              </form>
+          </section>
     
         `,
   data() {
@@ -50,6 +53,20 @@ export default {
     },
     setType(type) {
       this.type = type;
+    },
+  },
+  computed: {
+    placeholderByType() {
+      switch (this.type) {
+        case "note-txt":
+          return `What's on your mind...`;
+        case "note-img":
+          return `Enter image URL...`;
+        case "note-video":
+          return `Enter video URL...`;
+        case "note-todos":
+          return `Enter comma separated list...`;
+      }
     },
   },
 };

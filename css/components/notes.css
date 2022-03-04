@@ -2,9 +2,9 @@ body {
   background-color: rgb(245, 246, 248);
 }
 
-/* .notes-list li {
+.notes-list li {
   list-style-type: none;
-} */
+}
 
 .notes-list button {
   cursor: pointer;
@@ -203,6 +203,10 @@ body {
 
 .note-todos .done {
   text-decoration: line-through;
+}
+
+.note-todos ul {
+  padding: 0;
 }
 
 .note-add .add-actions {
