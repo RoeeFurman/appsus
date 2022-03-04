@@ -117,6 +117,18 @@ function _createNotes() {
           backgroundColor: "darkBlue",
         },
       },
+      {
+        id: utilService.makeId(),
+        type: "note-video",
+        titleTxt: "video note",
+        isPinned: false,
+        info: {
+          url: "https://www.youtube.com/embed/S3K6pUOAmTE",
+        },
+        style: {
+          backgroundColor: "purple",
+        },
+      },
     ];
     utilService.saveToStorage(NOTES_KEY, notes);
   }

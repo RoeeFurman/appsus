@@ -47,9 +47,16 @@ export default {
         note.info = { url: this.info };
       }
       if (this.type === "note-todos") {
-        note.info = { todos: [{ txt: this.info }] };
+        var todos = this.info.split(",");
+        todos = todos.map((todo) => {
+          todo = { txt: todo.trim(), isDone: false };
+          return todo;
+        });
+        note.info = { todos };
       }
       this.$emit("addNote", note);
+      this.titleTxt = "";
+      this.info = "";
     },
     setType(type) {
       this.type = type;
