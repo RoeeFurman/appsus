@@ -32,7 +32,7 @@ export default {
             </div>
             <div class="actions">
                 <button @click="removeNote(note.id)">
-                  <img src="img-notes/bx-trash.svg" alt="trash">
+                  <img src="img-notes/bx-trash-alt.svg" alt="trash">
                 </button>
                 <button @click="openPalette">
                   <img src="img-notes/bx-palette2.svg" alt="palette">
