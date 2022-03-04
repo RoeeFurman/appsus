@@ -33,7 +33,7 @@ body {
 
 .note-card {
   border-radius: 10px;
-  width: 10rem;
+  width: 15rem;
   background-color: lightyellow;
   /* padding: 2rem; */
   line-break: anywhere;
@@ -167,7 +167,7 @@ body {
 }
 
 .note-preview .mainCmp {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .note-preview .actions {
@@ -194,4 +194,8 @@ body {
 }
 
 .note-img {
+}
+
+.note-img img {
+  width: 100%;
 }
