@@ -5,11 +5,4 @@ export default {
                {{info.txt}}
             </section>
         `,
-  data() {
-    return {
-      val: "",
-    };
-  },
-  created() {},
-  components: {},
 };
