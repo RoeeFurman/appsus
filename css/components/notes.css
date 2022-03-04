@@ -170,6 +170,12 @@ body {
   padding: 1rem;
 }
 
+.note-preview input {
+  background-color: transparent;
+  border: none;
+  outline: 0;
+}
+
 .note-preview .actions {
   display: flex;
   position: relative;

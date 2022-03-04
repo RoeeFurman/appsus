@@ -22,7 +22,7 @@ export default {
   template: `
           <section class="note-preview">
             <header>
-              {{note.titleTxt}}
+              <input type="text" :value="title">
               <button @click="pinNote(note.id)">
                 <img src="img-notes/bx-pin2.svg" alt="pin">
               </button>
@@ -58,6 +58,7 @@ export default {
   },
   data() {
     return {
+      title: this.note.titleTxt,
       colors: colorOptions,
       clickedColorPalette: false,
     };
