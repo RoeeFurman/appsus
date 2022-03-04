@@ -37,16 +37,17 @@ export default {
                 <button @click="openPalette">
                   <img src="img-notes/bx-palette2.svg" alt="palette">
                 </button>
-                  <div class="color-container" v-if="clickedColorPalette">
-                    <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
-                  </div>
+                <div class="color-container" v-if="clickedColorPalette">
+                  <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
+                </div>
+                
                   <button @click="cloneNote(note.id)">
                   <img src="img-notes/bx-copy2.svg" alt="duplicate">
                 </button>
                   <button @click="mailNote(note.id)">
                   <img src="img-notes/bx-paper-plane2.svg" alt="paper-plane">
                 </button>
-            </div>
+              </div>
             </section>
       `,
   components: {

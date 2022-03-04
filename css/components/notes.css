@@ -24,7 +24,7 @@ body {
 
 .notes-area {
   align-items: start;
-  margin: 2rem 2rem;
+  margin: 2rem 5rem;
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: column; */
@@ -49,15 +49,11 @@ body {
 /* //color modal // */
 
 .color-container {
-  /* width: 290px; */
-  width: auto;
   padding: 8px 9px 3px;
-  /* box-sizing: border-box; */
   white-space: nowrap;
-  z-index: 6;
   background: #fff;
   position: absolute;
-  /* transform: translate(-13%, 0); */
+  top: 85%;
   box-shadow: 0 8px 16px 0 rgb(0 0 0 / 32%);
   border-radius: 6px;
   cursor: pointer;
@@ -176,6 +172,7 @@ body {
 
 .note-preview .actions {
   display: flex;
+  position: relative;
   justify-content: center;
   padding-bottom: 0.5rem;
 }
