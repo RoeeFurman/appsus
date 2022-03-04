@@ -24,7 +24,7 @@ function _createNotes() {
         id: utilService.makeId(),
         type: "note-txt",
         titleTxt: "txt note",
-        isPinned: true,
+        isPinned: false,
         info: {
           txt: "Fullstack Me Baby!",
         },
@@ -36,10 +36,9 @@ function _createNotes() {
         id: utilService.makeId(),
         type: "note-img",
         titleTxt: "img note",
-        isPinned: true,
+        isPinned: false,
         info: {
-          url: "http://some-img/me",
-          title: "Bobi and Me",
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgnL-6fb5PhgkCkH3odiqgPmhqoWm6HeRjwQ&usqp=CAU",
         },
         style: {
           backgroundColor: "",
@@ -51,10 +50,9 @@ function _createNotes() {
         titleTxt: "todo note",
         isPinned: true,
         info: {
-          label: "Get my stuff together",
           todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 },
+            { txt: "Driving liscence", isDone: false },
+            { txt: "Coding power", isDone: true },
           ],
         },
         style: {
@@ -67,7 +65,7 @@ function _createNotes() {
         titleTxt: "video note",
         isPinned: true,
         info: {
-          url: "https://www.youtube.com/watch?v=C_XkTKoDI18",
+          url: "https://www.youtube.com/watch?v=S3K6pUOAmTE&t=3417s",
         },
         style: {
           backgroundColor: "",
