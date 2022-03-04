@@ -28,7 +28,7 @@ export default {
               </button>
             </header>
             <div class="mainCmp">
-              <component :is="note.type" :info="note.info"></component>
+              <component :is="note.type" :info="note.info" @changeTxt="changeTxt($event, note.id)"></component>
             </div>
             <div class="actions">
                 <button @click="removeNote(note.id)">
@@ -40,7 +40,6 @@ export default {
                 <div class="color-container" v-if="clickedColorPalette">
                   <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
                 </div>
-                
                   <button @click="cloneNote(note.id)">
                   <img src="img-notes/bx-copy2.svg" alt="duplicate">
                 </button>
@@ -87,6 +86,9 @@ export default {
     },
     changeTitle(title, noteId) {
       this.$emit("changeTitle", title, noteId);
+    },
+    changeTxt(txt, noteId) {
+      this.$emit("changeTxt", txt, noteId);
     },
   },
 };
