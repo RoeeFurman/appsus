@@ -97,12 +97,12 @@ ul {
 }
 
 .to {
-  min-width: 250px;
+  min-width: 200px;
   /* font-size: 1em; */
 }
 
 .subject {
-  min-width: 450px;
+  min-width: 350px;
 }
 
 .preview-table {
@@ -150,4 +150,17 @@ ul {
 .delete-mail-details {
   background: transparent;
   border: none;
+}
+
+.starred {
+  background-color: yellow;
+}
+
+.star-icon {
+  height: 18px;
+  width: 20px;
+}
+
+.marked-folder {
+  font-weight: bolder;
 }

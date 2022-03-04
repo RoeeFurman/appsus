@@ -5,26 +5,25 @@ export default {
     props: ['mail'],
     template: `
             <section >
-                <div :class="displayReadUnreadClass" :class="displayStar">
+                <div :class="displayReadUnreadClass">
                     <table class="preview-table">
-                        <router-link :to="'/mail/'+mail.id" @click.prevent>
-                        <tbody >
+                        <router-link :to="'/mail/'+mail.id" @click="markAsRead(mail)">
+                        <tbody>
                             <tr>
                                 <td class="to">
-                                    TO: {{mail.to}} 
+                                     {{mail.to}} 
                                 </td>
                                 <td class="subject">
                                     SUBJECT: {{mail.subject}} 
                                 </td>
                                 <td>
-                                    SENT-AT:{{sentAtToDisplay}}
+                                    {{sentAtToDisplay}}
                                 </td>
-                                </tr>
-                                </tbody>
+                            </tr>
+                        </tbody>
                             </router-link>
-                                <table>
+                    </table>
                 </div>
-                <!-- <button @click="deleteMail">Delete</button> -->
             </section>
     `,
     data() {
@@ -50,6 +49,10 @@ export default {
 
     },
     methods:{
+        markAsRead(mail){
+            console.log(mail)
+            this.$emit('markAsRead', mail)
+        }
      
     },
     created() {

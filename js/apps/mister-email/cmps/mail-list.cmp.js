@@ -8,14 +8,13 @@ export default {
         <section class="mail-list">
                 <div class="mail-inbox" v-for="mail in mails" :key="mail.id">
                     <div class="mail-content">
-                   <mail-preview :mail="mail" :mailStatusRead="status"/>
+                   <mail-preview :mail="mail" @markAsRead="markAsRead" />
                     </div>
                    <div class="buttons">
                    <button @click="deleteMail(mail.id)"><img src="img-notes/bx-trash.svg" class="icon"></button>
-                   <button @click="toggleRead(mail.id)" ><img src="img-notes/bx-envelope.svg" class="icon"></button>
-                   <button @toggleStar="toggleStar(mail.id)" ><img src="img-notes/bx-star.svg" class="icon"></button>
+                   <button @click="toggleRead(mail.id)" ><img :src="[mail.isRead ? 'img-notes/bx-envelope-open.svg' : 'img-notes/bx-envelope.svg']" class="icon"></button>
+                   <button @click="toggleStar(mail.id)" ><img :src="[mail.isStarred? 'img-notes/yellow-star.png' : 'img-notes/bx-star.svg']" class="star-icon"></button>
                     </div>
-                   <!-- <button @click="toggleStar(mail.id)" ><img src="img-notes/bx-star.svg" class="icon"></button> -->
                 </div>
         </section>
     `,
@@ -28,6 +27,7 @@ export default {
         };
     },
     created(){
+
     },
     methods: {
         deleteMail(id) {
@@ -41,24 +41,18 @@ export default {
         toggleStar(id){
             console.log(id)
             this.$emit('toggleStar', id)
-        }
-        // remove(id) {
-        //     this.$emit('remove', id);
-        // },
-        // select(car) {
-        //     this.$emit('selected', car);
-        // }
+        }, 
+        markAsRead(mail){
+            console.log(mail)
+            this.$emit('markAsRead', mail)
+
+        },
     },
     computed: {
         readButton() {
-            // mailService.get()
-            // .then((mail)=>{
-            //     console.log(mail)})
-            return this.mailStatusRead
-        //   return 'mailService.get(id).then(mail => {
-        //       this.currMail = mail;
-        //       console.log(this.currMail)'
-        //     })
+            return "[mail.isRead ? 'img-notes/bx-envelope-open.svg' : 'img-notes/bx-envelope.svg']"
+            },
+        
             }
-        }
+        // }
     }

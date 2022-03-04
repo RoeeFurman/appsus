@@ -18,7 +18,7 @@ export default {
             filterBy: {
                 subject: '',
                 isRead: '',
-                status: '',
+                // status: '',
                 isStarred: '',
                 lables: ['','']
             }

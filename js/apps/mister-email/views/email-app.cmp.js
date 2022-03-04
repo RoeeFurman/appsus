@@ -22,7 +22,7 @@ export default {
                         <!-- <button v-if="!composeMode" @click="composeMode = !composeMode"><img src="img-notes/bx-message-rounded-add.svg" class="icon" title="Create New Mail"></button> -->
                         <mail-filter @filtered="setFilter" />
                         <email-compose v-if="composeMode" @mailSent="addMail"></email-compose>
-                        <mail-list v-else :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead" @toggleStar="toggleStar"/>
+                        <mail-list v-else :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead" @toggleStar="toggleStar" @markAsRead="markAsRead"/>
                     </div>
                 </div>
             </section>
@@ -42,6 +42,7 @@ export default {
             },
             sortBy: null,
             composeMode: false,
+            currMail: null,
 
         };
     },
@@ -60,12 +61,7 @@ export default {
                 .then(() => {
                     const idx = this.mails.findIndex((mail) => mail.id === id);
                     this.mails.splice(idx, 1);
-        //             showSuccessMsg('Deleted succesfully');
                 })
-        //         .catch(err => {
-        //             console.error(err);
-        //             showErrorMsg('Error - please try again later')
-        //         });
         },
         contentReceived(content){
             console.log(content)
@@ -93,7 +89,7 @@ export default {
             })
     },
         toggleStar(id){
-            console.log(id)
+            console.log(id, "star")
             mailService.get(id)
             .then((mail)=>{
                 console.log(mail)
@@ -110,7 +106,18 @@ export default {
             this.mails.unshift(mail);
 
             this.composeMode = false;
+    },
+    markAsRead(mail){
+        this.currMail = mail;
+        this.currMail.isRead = true;
+        console.log(this.currMail.isRead, 'currMail')
+        mailService.save(this.currMail).then(()=>{
+            mailService.query().then(mails => {
+                console.log(mails)
+                this.mails = mails
+            })
 
+        })
     }
 },
     computed: {
@@ -118,8 +125,9 @@ export default {
             if (!this.filterBy) return this.mails;
             console.log(this.sortBy)
             const regex = new RegExp(this.filterBy.subject, 'i');
-            if(!this.sortBy) return this.mails.filter(mail => (regex.test(mail.subject)));
+            if(!this.sortBy) return this.mails.filter(mail => (regex.test(mail.subject) && !mail.isSent));
             else if(this.sortBy === 'read') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isRead))
+            else if(this.sortBy === 'starred') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isStarred))
             else if(this.sortBy === 'unread') return this.mails.filter(mail => (regex.test(mail.subject) && !mail.isRead))
             else if(this.sortBy === 'trash') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isTrash))
             else if(this.sortBy === 'sent') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isSent))

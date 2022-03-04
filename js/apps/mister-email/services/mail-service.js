@@ -72,7 +72,7 @@ function _createMails() {
                 isSent: false, 
                 isDraft: false,
                 isStarred: true,
-                isTrash: true,
+                isTrash: false,
                 sentAt: 1551133930594,
                 to: 'momo@momo.com'
             },
@@ -84,15 +84,15 @@ function _createMails() {
                 isRead: true, 
                 isStarred: true,
                 isSent: true, 
-                isTrash: true,
+                isTrash: false,
                 sentAt: 1551133930599,
                 to: 'bobo@momo.com'
             },
             {
                 id: utilService.makeId(),
-                subject: 'Miss you!',
-                body: 'oh actually I Would love to catch up sometimes',
-                isSent: true, 
+                subject: 'SALE! BEST OFFER WINTER SALE!',
+                body: 'now on Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima nihil perspiciatis nemo rerum eligendi molestiae rem, quod sed aut at laudantium aliquid? Ex, reprehenderit! Doloremque natus assumenda sequi nostrum quam!',
+                isSent: false, 
                 isDraft: false, 
                 isStarred: true,
                 isRead: false, 
@@ -102,9 +102,9 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'Sprint 3!',
-                body: 'oh actually I Would love to catch up sometimes',
-                isSent: true, 
+                subject: 'Sprint 3! STARTS ON WEDNESDAY',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima nihil perspiciatis nemo rerum eligendi molestiae rem, quod sed aut at laudantium aliquid? Ex, reprehenderit! Doloremque natus assumenda sequi nostrum quam!',
+                isSent: false, 
                 isStarred: true,
                 isDraft: false, 
                 isRead: true, 
@@ -114,7 +114,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                subject: 'Sprint 3 we kick your ass!',
+                subject: 'Sprint 3 WE kick your ass!',
                 body: 'oh actually I Would love to catch up sometimes',
                 isSent: true, 
                 isDraft: false, 
@@ -123,6 +123,30 @@ function _createMails() {
                 isTrash: false,
                 sentAt: 1551133930596,
                 to: 'go@gogo.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'VUE is killing me!!!!',
+                body: 'oh actually I made it very good, although consectetur adipisicing elit. Minima nihil perspiciatis nemo rerum eligendi molestiae rem',
+                isSent: false, 
+                isDraft: false, 
+                isRead: true, 
+                isStarred: true,
+                isTrash: false,
+                sentAt: 1551133930596,
+                to: 'yaron@appsus.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Response: VUE is killing me!!!!',
+                body: 'oh actually I made it very good, although consectetur adipisicing elit. Minima nihil perspiciatis nemo rerum eligendi molestiae rem',
+                isSent: false, 
+                isDraft: false, 
+                isRead: true, 
+                isStarred: true,
+                isTrash: false,
+                sentAt: 1551133930596,
+                to: 'so@soso.com'
             },
         ];
         utilService.saveToStorage(MAILS_KEY, mails)

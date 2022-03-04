@@ -38,7 +38,7 @@ export default {
                             To:
                           </td>
                           <td>
-                            <span>{{mail.to}}</span><
+                            <span>{{mail.to}}</span>
                            </td>
                         </tr>
                         <tr>
