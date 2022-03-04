@@ -1,256 +1,243 @@
-
 @font-face {
-    font-family: poppinsMed;
-    src: url(../css/poppins/Poppins-Regular.ttf);
+  font-family: poppinsMed;
+  src: url(../css/poppins/Poppins-Regular.ttf);
 }
 
-
-*{
-    border-radius: 5px;
-    font-family: poppinsMed;
+* {
+  border-radius: 5px;
+  font-family: poppinsMed;
 }
 
-.add-book-input{
-    margin-bottom: 10px;
+.add-book-input {
+  margin-bottom: 10px;
 }
 
-body{
-    background-color: lightslategray;
-    font-size: .8em;
+body {
+  background-color: lightslategray;
+  font-size: 0.8em;
 }
 
- .book-list{
-   display: flex;
-   flex-wrap: wrap;
-   gap: 20px;
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.book-preview-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-    padding: 10px;
-    height: 260px;
-    width: 120px;
-    background-color: lightcyan;
-    border: 1px solid black;
+.book-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  padding: 10px;
+  height: 260px;
+  width: 120px;
+  background-color: lightcyan;
+  border: 1px solid black;
 }
-
 
 .book-preview-container span {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
-.book-details-img{
-    height: 140px;
-    margin-top: 10px;
+.book-details-img {
+  height: 140px;
+  margin-top: 10px;
 }
 
-.red {
-    color: red;
+/* .expensive {
+  color: red;
 }
 
-.green {
-    color: green;
-}
+.cheap {
+  color: green;
+} */
 
 .read-more {
-    color: blue;
+  color: blue;
 }
 
 .preview {
-    height: 100px;
-
+  height: 100px;
 }
 
 .book-filter {
-    padding: 10px;
-    background-color: lightgray;
-    margin-bottom: 20px;
-    border: 1px solid black;
-    text-align: center;
-
+  padding: 10px;
+  background-color: lightgray;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  text-align: center;
 }
 
-
-.app-main{
-    min-height: 78vh;
+.app-main {
+  min-height: 78vh;
 }
 
 .price-range {
-    background-color: rgb(190, 189, 189);
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 2em;
-    height: 2em;
-    padding: 10px;
-    margin: 5px;
+  background-color: rgb(190, 189, 189);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 2em;
+  height: 2em;
+  padding: 10px;
+  margin: 5px;
 }
 
-.book-details{
-    max-width: 450px;
-    margin: auto;
-    background-color: lightcyan;
-    border: 1px solid black;
-    padding: 20px;
+.book-details {
+  max-width: 450px;
+  margin: auto;
+  background-color: lightcyan;
+  border: 1px solid black;
+  padding: 20px;
 }
 
 .nav-bar {
-    background-color: rgb(16, 18, 53);
-    padding: 5px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: aliceblue;
-    display: flex;
-    justify-content: space-between;
+  background-color: rgb(16, 18, 53);
+  padding: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: aliceblue;
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav-links {
-    margin-right: 2em;
+  margin-right: 2em;
 }
 
 .logo {
-    font-size: larger;
-    font-weight: bolder;
+  font-size: larger;
+  font-weight: bolder;
 }
 
 .app-footer {
-    margin-top: 20px;
-    text-align: center;
-    background-color: rgb(16, 18, 53);
-    padding: 1px;
-    color: aliceblue;
+  margin-top: 20px;
+  text-align: center;
+  background-color: rgb(16, 18, 53);
+  padding: 1px;
+  color: aliceblue;
 }
 
-.router-link-exact-active{
-    background-color: aliceblue;
-    color: rgb(16, 18, 53);
-
+.router-link-exact-active {
+  background-color: aliceblue;
+  color: rgb(16, 18, 53);
 }
 
-
-a{
-    color: aliceblue;
-    text-decoration: none;
+a {
+  color: aliceblue;
+  text-decoration: none;
 }
 
-.back-link{
-    color:aliceblue;
-    cursor: pointer;
-    background-color: rgb(16, 18, 53);
-    padding: 3px 10px;
-    text-align: right;
+.back-link {
+  color: aliceblue;
+  cursor: pointer;
+  background-color: rgb(16, 18, 53);
+  padding: 3px 10px;
+  text-align: right;
 }
 
-
-.review{
-    background-color: rgb(16, 18, 53);
-    color: aliceblue;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    /* border: 1px solid aliceblue; */
-    max-width: 80%;
-    margin: auto;
-    margin-top: 10px;
-    border-radius: 10px;
+.review {
+  background-color: rgb(16, 18, 53);
+  color: aliceblue;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid aliceblue; */
+  max-width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 .review button {
-    max-width: 150px;
-    margin: auto;
+  max-width: 150px;
+  margin: auto;
 }
 
-.review-data{
-    display: flex;
-    justify-content: space-between;
-    vertical-align: middle;
-    line-height: 2em;
-    margin: 10px 0 ;
+.review-data {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  line-height: 2em;
+  margin: 10px 0;
 }
 
-.review-title{
-    margin: auto;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: larger;
-    font-weight: bolder;
+.review-title {
+  margin: auto;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: larger;
+  font-weight: bolder;
 }
 
 .review-add {
-    max-width: 95%;
-    background-color: rgb(172, 172, 172);
-    padding: 15px 5px;
-
+  max-width: 95%;
+  background-color: rgb(172, 172, 172);
+  padding: 15px 5px;
 }
 
-
-.user-msg{
-    height: 40px;
-    width: 10em;
-    text-align: center;
-    position: fixed;
-    right: 30px;
-    top: 50px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 20px;
+.user-msg {
+  height: 40px;
+  width: 10em;
+  text-align: center;
+  position: fixed;
+  right: 30px;
+  top: 50px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
 }
 
 .success {
-    border: 4px solid green;    
+  border: 4px solid green;
 }
 
-.failure{
-    border: 4px solid red;    
+.failure {
+  border: 4px solid red;
 }
 
-.home-img{
-    height: 400px;
+.home-img {
+  height: 400px;
 }
 
 .home-page {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.about-img{
-    float: left;
-    height: 200px;
-    margin: 5px 20px;
+.about-img {
+  float: left;
+  height: 200px;
+  margin: 5px 20px;
 }
 
-.myPic{
-border-radius: 50%;
-    float: right;
-    height: 150px;
-    margin: 5px 20px;
+.myPic {
+  border-radius: 50%;
+  float: right;
+  height: 150px;
+  margin: 5px 20px;
 }
 
-
-.home-go{
-    font-size: 20px;
-    padding: 5px;
-    margin-bottom: 20px;
-    transition: all 1s;
+.home-go {
+  font-size: 20px;
+  padding: 5px;
+  margin-bottom: 20px;
+  transition: all 1s;
 }
 
-.home-go:hover{
-    background-color: rgb(16, 18, 53);
+.home-go:hover {
+  background-color: rgb(16, 18, 53);
 }
 
-.welcome{
-    font-size: 30px;
+.welcome {
+  font-size: 30px;
 }
 
-.app-main{
-    max-width: 90%;
-    margin: auto;
+.app-main {
+  max-width: 90%;
+  margin: auto;
 }
 
-.about-page p{
-    padding: 0 20px;
+.about-page p {
+  padding: 0 20px;
 }
-
