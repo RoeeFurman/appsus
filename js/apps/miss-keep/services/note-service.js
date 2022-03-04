@@ -65,7 +65,7 @@ function _createNotes() {
         titleTxt: "video note",
         isPinned: true,
         info: {
-          url: "https://www.youtube.com/watch?v=S3K6pUOAmTE&t=3417s",
+          url: "https://www.youtube.com/embed/XHNHq1mC0VQ",
         },
         style: {
           backgroundColor: "",

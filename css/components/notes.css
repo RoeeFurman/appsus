@@ -2,9 +2,9 @@ body {
   background-color: rgb(245, 246, 248);
 }
 
-.notes-list li {
+/* .notes-list li {
   list-style-type: none;
-}
+} */
 
 .notes-list button {
   cursor: pointer;
@@ -193,9 +193,18 @@ body {
   opacity: 1;
 }
 
-.note-img {
-}
-
 .note-img img {
   width: 100%;
+}
+
+.note-video iframe {
+  width: 100%;
+}
+
+/* .note-todos li {
+  list-style: disc;
+} */
+
+.note-todos input {
+  background-color: transparent;
 }

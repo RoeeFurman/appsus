@@ -2,7 +2,8 @@ export default {
   props: ["info"],
   template: `
               <section class="note-video">
-                 <!-- {{info}} -->
+                 <iframe :src="info.url" frameborder="0">
+                 </iframe>
               </section>
           `,
   components: {},
