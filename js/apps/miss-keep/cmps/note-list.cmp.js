@@ -8,7 +8,7 @@ export default {
           <h2>PINNED</h2>
           <ul class="notes-area">
                 <li class="note-card" v-for="note in pinnedNotes" :class="[note.style.backgroundColor]">
-                    <note-preview :note="note" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+                    <note-preview :note="note"  @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
                 </li>  
           </ul> 
         </div>
@@ -16,7 +16,7 @@ export default {
             <h2>OTHERS</h2>
             <ul class="notes-area">
                   <li class="note-card" v-for="note in notPinnedNotes" :class="[note.style.backgroundColor]">
-                      <note-preview :note="note" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+                      <note-preview :note="note" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
                   </li>
             </ul>
         </div>
@@ -42,6 +42,9 @@ export default {
     },
     pinNote(noteId) {
       this.$emit("pinNote", noteId);
+    },
+    changeTitle(title, noteId) {
+      this.$emit("changeTitle", title, noteId);
     },
   },
   computed: {

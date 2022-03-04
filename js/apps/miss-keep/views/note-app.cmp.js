@@ -11,7 +11,7 @@ export default {
                     <p class="sub-heading">You do you, and we will do the rest</p>
                   </div>
                   <note-add @addNote="addNote"></note-add>
-                  <note-list @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
+                  <note-list @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
   
       `,
@@ -69,6 +69,11 @@ export default {
       noteService.updateNote(note).then(() => {
         this.loadNotes();
       });
+    },
+    changeTitle(title, id) {
+      const note = this.notes.find((note) => note.id === id);
+      note.titleTxt = title;
+      noteService.updateNote(note);
     },
   },
 

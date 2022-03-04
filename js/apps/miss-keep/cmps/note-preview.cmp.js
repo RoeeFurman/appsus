@@ -22,7 +22,7 @@ export default {
   template: `
           <section class="note-preview">
             <header>
-              <input type="text" :value="title">
+              <input type="text" v-model="title" @input="changeTitle(title, note.id)">
               <button @click="pinNote(note.id)">
                 <img src="img-notes/bx-pin2.svg" alt="pin">
               </button>
@@ -84,6 +84,9 @@ export default {
     },
     pinNote(noteId) {
       this.$emit("pinNote", noteId);
+    },
+    changeTitle(title, noteId) {
+      this.$emit("changeTitle", title, noteId);
     },
   },
 };
