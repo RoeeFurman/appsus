@@ -11,15 +11,15 @@ export default {
                     Back to Mails
                     </router-link> -->
                   <div class="main-container-details">
-                  <div class="side-filter-container">
-                  <side-filter/>
-                </div>
+                  <!-- <div class="side-filter-container"> -->
+                  <!-- <side-filter/> -->
+                <!-- </div> -->
                 <div class="mail-details-container">
                   <table>
                     <tbody>
                       <tr>
                         <td>
-                          Subject:
+                          <b>Subject:</b>
                         </td>
                         <td>
                           <span> {{mail.subject}}</span>
@@ -27,15 +27,15 @@ export default {
                     </tr>
                     <tr>
                       <td>
-                      Sent at:
+                      <b>Time:</b>
                         </td> 
                         <td>
-                          <span>{{mail.sentAt}}</span>
+                          <span>{{displayTime}}</span>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                            To:
+                           <b> To:</b>
                           </td>
                           <td>
                             <span>{{mail.to}}</span>
@@ -43,7 +43,7 @@ export default {
                         </tr>
                         <tr>
                         <td>
-                          Body:
+                         <b> Body:</b>
                           </td>
                           <td>
                             <span>{{mail.body}}</span>
@@ -51,13 +51,14 @@ export default {
                         </tr>
                         <tr>
                         <td>
-                          Delete mail:
+                         <b> Actions:</b>
                           </td>
                           <td>
                             <button @click="deleteMail" class="delete-mail-details"><img src="img-notes/bx-trash.svg" class="icon"></button>
                             <!-- <span>{{mail.body}}</span> -->
                           </td>
                         </tr>
+                      </tbody>
                         </table>
                       </div>
               </div>
@@ -86,6 +87,15 @@ export default {
       console.log(mail);
       this.mail = mail;
     });
+  },
+  computed: {
+    displayTime(){
+      let time = new Date(this.mail.sentAt)
+      let date = time.toISOString().slice(0,10);
+      let hour = time.toISOString().slice(11,20);
+      return (`${date} at: ${hour}`)
+
+    }
   },
   methods: {
     deleteMail() {

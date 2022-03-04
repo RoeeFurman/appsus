@@ -8,7 +8,7 @@ export default {
             <div class="home-page-icon"><router-link to="/note">Note<img src="img-notes/bx-edit.svg"></router-link></div> 
             <div class="home-page-icon"><router-link to="/book">Books<img src="img-notes/bx-book-open.svg"></router-link></div> 
             <div class="home-page-icon"><router-link to="/about">About<img src="img-notes/bx-info-circle.svg"></router-link></div> 
-            <div>
+            </div>
         </section>
 </div>
     `,

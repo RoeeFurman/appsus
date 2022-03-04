@@ -3,28 +3,29 @@ import { mailService } from '../services/mail-service.js';
 export default {
     template: `
         <section class="email-compose">
-            <h1>Compose-Mode</h1>
-            <form @submit.prevent class="review-add">
-            <div class="review">
-                <table>
+            <h1>Compose New Mail:</h1>
+            <form @submit.prevent>
+            <div class="compose-new-mail">
+                <table class="compose-table">
                     <tr>
                         <td class="first-column"> To: </td>
-                        <td><input ref="input" type="email" @input="displayNewMail" v-model="newMail.to"  /></td>
+                        <td><input ref="input" type="email" @input="displayNewMail" v-model="newMail.to" size=50 placeholder="maggie@appsus.com"/></td>
                     </tr>
                     <tr>
                     <td>Subject: </td>
-                    <td><input type="text" @input="displayNewMail" v-model="newMail.subject" placeholder="Subject" /></td>
+                    <td><input type="text" @input="displayNewMail" v-model="newMail.subject" placeholder="New Subject" class="subject-input"/></td>
                     </tr>
                     <tr>
                         <td>Body:</td>
                         <td>
-                            <textarea v-model="newMail.body" rows="4" cols="30" placeholder="Your Mail here"></textarea>
+                            <textarea v-model="newMail.body" rows="10" cols="100" placeholder="Your Mail here"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <button @click="save"><img src="img-notes/bxs-paper-plane.svg"></button>
+                            <button @click="send">Send <img src="img-notes/bxs-paper-plane.svg"></button>
+                            <button @click="moveToDraft">Draft <img src="img-notes/draft-icon.png" class="draft-icon"></button>
                         </td>
                     </tr>
                 </table>
@@ -36,7 +37,7 @@ export default {
         return {
             newMail: {
                 // id: '',
-                subject: 'New Subject',
+                subject: '',
                 body: '',
                 isRead: false, 
                 isSent: true, 
@@ -44,22 +45,25 @@ export default {
                 isStarred: false,
                 isTrash: false,
                 sentAt: new Date(),
-                to: 'maggie@appsus.com'
+                to: ''
             },
         };
     },
     methods: {
         displayNewMail(){
         },
-        save(){
+        send(){
+            if(!this.newMail.to || !this.newMail.subject) return
             console.log(this.newMail);
             mailService.addMail(this.newMail);
                 this.$emit('mailSent', this.newMail)
-   
-
-        
-
-
+        },
+        moveToDraft(){
+            this.newMail.isDraft = true;
+            this.newMail.isSent = false;
+            console.log(this.newMail)
+            mailService.addMail(this.newMail);
+                this.$emit('mailSent', this.newMail)
         }
         },
     // },

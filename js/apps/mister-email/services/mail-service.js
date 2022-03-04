@@ -23,31 +23,9 @@ function remove(bookId) {
 }
 
 
-// function removeMail(mailId){
-//     return storageService.query(MAILS_KEY)
-//     .then(mails =>{
-//         const idx = mails.findIndex(mail => mail.id === mailId);
-//         console.log(idx);
-//         remove(mailId)
-//         mails.splice(idx, 1);
-//         console.log(mails)
-//         return mails
-//     })
-    // get(mailId).then(mail => console.log(mail));
-// }
-
-// function removeReview(book, reviewId) {
-//     const idx = book.reviews.findIndex(review => review.id === reviewId)
-//     book.reviews.splice(idx, 1)
-//     return storageService.put(BOOKS_KEY, book)
-//   }
-
 
 function get(bookId) {
     return storageService.get(MAILS_KEY, bookId)
-        // .then(book => {
-        //     return _setNextPrevbookId(book)
-        // })
 }
 
 function save(mail) {
@@ -64,6 +42,30 @@ function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY);
     if (!mails || !mails.length) {
         mails = [
+            {
+                id: utilService.makeId(),
+                subject: 'OLDEST!',
+                body: 'Would love to catch up sometimes',
+                isRead: true, 
+                isSent: false, 
+                isDraft: false,
+                isStarred: true,
+                isTrash: false,
+                sentAt: 1501133000000,
+                to: 'momo@momo.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'NEWEST!',
+                body: 'Would love to catch up sometimes',
+                isRead: true, 
+                isSent: false, 
+                isDraft: false,
+                isStarred: true,
+                isTrash: false,
+                sentAt: 1901133000000,
+                to: 'momo@momo.com'
+            },
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',

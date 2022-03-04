@@ -171,11 +171,11 @@ a {
   font-weight: bolder;
 }
 
-.review-add {
+/* .review-add {
   max-width: 95%;
   background-color: rgb(172, 172, 172);
   padding: 15px 5px;
-}
+} */
 
 .user-msg {
   height: 40px;

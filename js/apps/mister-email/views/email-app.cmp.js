@@ -11,19 +11,20 @@ export default {
         <section class="email-app app-main">
     <div class="main-nav">
             <h1>Mail app</h1>
-    </div>
+                </div>
                 <div class="main-container">
                     <div class="side-search">
                         <side-filter @sortBy="setSort"/>
-                        <button v-if="!composeMode" @click="composeMode = !composeMode"><img src="img-notes/bx-message-rounded-add.svg" class="icon" title="Create New Mail"></button>
+                        <button v-if="!composeMode" @click="composeMode = !composeMode" class="compose-icon"><img src="img-notes/bx-message-rounded-add.svg" title="Create New Mail"></button>
                     </div>
-                    <div class="sec-container">
-                        <!-- <button>new mail</button> -->
-                        <!-- <button v-if="!composeMode" @click="composeMode = !composeMode"><img src="img-notes/bx-message-rounded-add.svg" class="icon" title="Create New Mail"></button> -->
-                        <mail-filter @filtered="setFilter" />
+                    <div class="sec-container" >
+                        <mail-filter @filtered="setFilter" @sortByDate="sortByDate" @sortBySubject="sortBySubject"/>
                         <email-compose v-if="composeMode" @mailSent="addMail"></email-compose>
                         <mail-list v-else :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead" @toggleStar="toggleStar" @markAsRead="markAsRead"/>
                     </div>
+
+
+
                 </div>
             </section>
     `,
@@ -41,9 +42,10 @@ export default {
                 subject: '',
             },
             sortBy: null,
+            setMailsByLatest: true, 
+            setMailsBySubject: false,
             composeMode: false,
             currMail: null,
-
         };
     },
     created() {
@@ -52,6 +54,12 @@ export default {
         eventBus.on('sentContent',this.contentReceived)
     },
     methods: {
+        sortBySubject(){
+            this.setMailsBySubject = !this.setMailsBySubject
+        },
+        sortByDate(){
+            this.setMailsByLatest = !this.setMailsByLatest
+        },
         updateMails(mails){
             this.mails = mails
             console.log(mails)
@@ -70,6 +78,7 @@ export default {
             this.filterBy = filterBy;
         },
         setSort(sortBy) {
+            if(this.composeMode) this.composeMode = false;
             console.log(sortBy)
             this.sortBy = sortBy;
             return this
@@ -122,16 +131,52 @@ export default {
 },
     computed: {
         mailsToShow(){
-            if (!this.filterBy) return this.mails;
-            console.log(this.sortBy)
+            let filteredMails = this.mails
+            let filteredAndSortedBySubjectMails = [];
             const regex = new RegExp(this.filterBy.subject, 'i');
-            if(!this.sortBy) return this.mails.filter(mail => (regex.test(mail.subject) && !mail.isSent));
-            else if(this.sortBy === 'read') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isRead))
-            else if(this.sortBy === 'starred') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isStarred))
-            else if(this.sortBy === 'unread') return this.mails.filter(mail => (regex.test(mail.subject) && !mail.isRead))
-            else if(this.sortBy === 'trash') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isTrash))
-            else if(this.sortBy === 'sent') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isSent))
-            else if(this.sortBy === 'draft') return this.mails.filter(mail => (regex.test(mail.subject) && mail.isDraft))
+         
+            if (!this.filterBy) return filteredMails.sort((c1, c2) => c2.sentAt - c1.sentAt);
+            
+            if(!this.sortBy) {
+                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && !mail.isSent && !mail.isDraft && !mail.isTrash));
+                } else if(this.sortBy === 'read'){
+                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isRead))
+                } else if(this.sortBy === 'starred'){
+                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isStarred))
+                } else if(this.sortBy === 'unread'){
+                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && !mail.isRead))
+                } else if(this.sortBy === 'trash'){
+                filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isTrash))
+                } else if(this.sortBy === 'sent'){
+                filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isSent))
+                } else if(this.sortBy === 'draft'){
+                filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isDraft))
+                }
+                
+            // if(this.setMailsBySubject) return filteredAndSortedBySubjectMails = filteredMails.sort((c1, c2) => c1.subject.localeCompare(c2.subject));
+            
+            // // console.log(this.setMailsByLatest, 'latest up?')
+            // if (this.setMailsByLatest) return filteredMails.sort((c1, c2) => c2.sentAt - c1.sentAt)
+            // else return  filteredMails.sort((c1, c2) => c1.sentAt - c2.sentAt);
+                console.log(this.setMailsByLatest, 'time sort')
+                console.log(this.setMailsBySubject, 'subject sort')
+         
+                return filteredMails.sort((a, b) => {
+                    if(this.setMailsBySubject){
+                        var subjectDiff = (a.subject.localeCompare(b.subject))
+                        if(subjectDiff !==0) return subjectDiff
+                    }
+                    if(this.setMailsByLatest){
+                        var timeDiff = (b.sentAt-a.sentAt)
+                        // if(timeDiff !== 0) return timeDiff
+                        return timeDiff
+                    }
+
+                        return 0
+                })
+            // }
+
+
             }
         }
 

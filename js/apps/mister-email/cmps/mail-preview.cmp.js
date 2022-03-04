@@ -21,7 +21,7 @@ export default {
                                 </td>
                             </tr>
                         </tbody>
-                            </router-link>
+                        </router-link>
                     </table>
                 </div>
             </section>
