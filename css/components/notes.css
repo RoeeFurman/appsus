@@ -201,10 +201,17 @@ body {
   width: 100%;
 }
 
-/* .note-todos li {
-  list-style: disc;
-} */
+.note-todos .done {
+  text-decoration: line-through;
+}
 
-.note-todos input {
-  background-color: transparent;
+.note-add .add-actions {
+  width: 10rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.note-add .add-actions button:hover {
+  background: rgb(145 145 145 / 20%);
+  border-radius: 50%;
 }
