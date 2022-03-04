@@ -8,7 +8,7 @@ export default {
             <div class="review">
                 <table>
                     <tr>
-                        <td> To: </td>
+                        <td class="first-column"> To: </td>
                         <td><input ref="input" type="email" @input="displayNewMail" v-model="newMail.to"  /></td>
                     </tr>
                     <tr>

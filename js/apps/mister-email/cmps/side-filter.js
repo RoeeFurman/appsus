@@ -2,7 +2,7 @@ export default {
     template: `
         <section class="side-filter">
             <ul>
-                    <li @click=sortByInbox>INBOX</li>
+                    <li @click=sortByInbox :class="((sortBy==='') ? "marked" : null)">INBOX</li>
                     <li @click=sortByRead>READ</li>
                     <li @click=sortByUnread>UNREAD</li>
                     <li @click=sortBySent>SENT</li>
