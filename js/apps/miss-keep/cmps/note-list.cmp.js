@@ -1,5 +1,13 @@
 import notePreview from "../cmps/note-preview.cmp.js";
 
+// $(".notes-area").isotope({
+//   itemSelector: ".note-card",
+//   masonry: {
+//     columnWidth: 100,
+//     horizontalOrder: true,
+//   },
+// });
+
 export default {
   props: ["notes"],
   template: `

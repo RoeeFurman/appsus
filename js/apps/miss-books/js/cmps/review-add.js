@@ -1,9 +1,9 @@
-import { bookService } from "../services/book-service.js"
-import { eventBus } from '../services/eventBus-service.js';
+import { bookService } from "../services/book-service.js";
+import { eventBus } from "../services/eventBus-service.js";
 
 export default {
-    props: ['bookId'],
-    template: `
+  props: ["bookId"],
+  template: `
         <p class="review-title">Book Reviews:</p>
         <div v-if="book" v-for="review in showReviews" class="review">
             <span>Comment By: {{review.name}}</span>
@@ -26,56 +26,53 @@ export default {
             </div>
         </form>
     `,
-    data() {
-        return {
-            review: {
-                name: '',
-                rate: null,
-                date: new Date().toISOString().slice(0, 10),
-                desc: '',
-            },
-            book: null,
-            // stars: ['💥', '💥💥', '💥💥💥', '💥💥💥💥', '💥💥💥💥💥'],
-            stars: [1, 2, 3, 4, 5]
-        }
+  data() {
+    return {
+      review: {
+        name: "",
+        rate: null,
+        date: new Date().toISOString().slice(0, 10),
+        desc: "",
+      },
+      book: null,
+      // stars: ['💥', '💥💥', '💥💥💥', '💥💥💥💥', '💥💥💥💥💥'],
+      stars: [1, 2, 3, 4, 5],
+    };
+  },
+  created() {
+    bookService.get(this.bookId).then((book) => (this.book = book));
+  },
+  computed: {
+    showReviews() {
+      if (Array.isArray(this.book.reviews)) return this.book.reviews;
     },
-    created() {
-        bookService.get(this.bookId).then(book => this.book = book)
+  },
+  mounted() {
+    this.$refs.input.focus();
+  },
+  methods: {
+    displayReview() {
+      // console.log(this.review)
+      return this.review;
     },
-    computed: {
-        showReviews() {
-            if (Array.isArray(this.book.reviews)) return this.book.reviews
-        }
-
+    save() {
+      bookService.addReview(this.bookId, { ...this.review }).then((book) => {
+        this.book = book;
+        this.review = {
+          name: "",
+          rate: null,
+          date: new Date().toISOString().slice(0, 10),
+          desc: "",
+        };
+        eventBus.emit("show-msg", { txt: "Review Added", type: "success" });
+        // this.$router.push(`/book/${book.id}`)
+      });
     },
-    mounted() {
-        this.$refs.input.focus()
-
-    }, methods: {
-        displayReview() {
-            // console.log(this.review)
-            return this.review
-        },
-        save() {
-            bookService.addReview(this.bookId, { ...this.review })
-                .then(book => {
-                    this.book = book
-                    this.review = {
-                        name: '',
-                        rate: null,
-                        date: new Date().toISOString().slice(0, 10),
-                        desc: '',
-                    }
-                    eventBus.emit('show-msg', { txt: 'Review Added', type: 'success' })
-                    // this.$router.push(`/book/${book.id}`)
-                })
-        },
-        removeComment(reviewId) {
-            bookService.removeReview(this.book, reviewId)
-                .then(book => {
-                    this.book = book
-                    eventBus.emit('show-msg', { txt: 'Review Removed', type: 'failure' })
-                })
-        }
-    }
-}
+    removeComment(reviewId) {
+      bookService.removeReview(this.book, reviewId).then((book) => {
+        this.book = book;
+        eventBus.emit("show-msg", { txt: "Review Removed", type: "failure" });
+      });
+    },
+  },
+};

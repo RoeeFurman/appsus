@@ -2,6 +2,7 @@ import { eventBus } from "../../../services/eventBus-service.js";
 import { noteService } from "../../miss-keep/services/note-service.js";
 import noteList from "../cmps/note-list.cmp.js";
 import noteAdd from "../cmps/note-add.cmp.js";
+import noteFilter from "../cmps/note-filter.cmp.js";
 
 export default {
   template: `
@@ -11,6 +12,7 @@ export default {
                     <p class="sub-heading">You do you, and we will do the rest</p>
                   </div>
                   <note-add @addNote="addNote"></note-add>
+                  <note-filter  @set-filter="setFilter" @set-search="setSearch"></note-filter>
                   <note-list @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
   
@@ -18,10 +20,13 @@ export default {
   components: {
     noteList,
     noteAdd,
+    noteFilter,
   },
   data() {
     return {
       notes: [],
+      filterBy: null,
+      searchBy: "",
     };
   },
   created() {
@@ -32,6 +37,13 @@ export default {
       noteService.query().then((notes) => {
         return (this.notes = notes);
       });
+    },
+
+    setFilter(filterBy) {
+      this.filterBy = filterBy;
+    },
+    setSearch(searchBy) {
+      this.searchBy = searchBy;
     },
 
     deleteNote(id) {
@@ -90,14 +102,24 @@ export default {
       const note = this.notes.find((note) => note.id === noteId);
       const todo = note.info.todos.find((todo) => todo.id === todoId);
       todo.isDone = mark;
-      console.log(todo);
       noteService.updateNote(note);
     },
   },
 
   computed: {
     notesToShow() {
-      return this.notes;
+      if (!this.filterBy && !this.searchBy) return this.notes;
+      let notesToShow = this.notes;
+      if (this.searchBy) {
+        notesToShow = notesToShow.filter((note) =>
+          note.titleTxt.toLowerCase().includes(this.searchBy.toLowerCase())
+        );
+      }
+      if (this.filterBy === "All")
+        return notesToShow.filter((note) => note.type === this.filterBy);
+      if (this.filterBy)
+        return notesToShow.filter((note) => note.type === this.filterBy);
+      return notesToShow;
     },
   },
 };

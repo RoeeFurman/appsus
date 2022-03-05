@@ -235,3 +235,9 @@ body {
   width: 100%;
   /* word-wrap: break-word; */
 }
+
+.note-filter {
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
+}
