@@ -19,7 +19,7 @@ export default {
                     <tr>
                         <td><b>Body: </b></td>
                         <td>
-                            <textarea v-model="newMail.body" rows="10" cols="30" placeholder="Your Mail here"></textarea>
+                            <textarea v-model="newMail.body" rows="10" cols="25" placeholder="Your Mail here"></textarea>
                         </td>
                     </tr>
                     <tr>
