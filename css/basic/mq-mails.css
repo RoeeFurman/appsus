@@ -1,0 +1,19 @@
+@media (max-width: 420px) {
+  .email-app .main-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .email-app .side-filter {
+    display: none;
+  }
+
+  .mail-inbox {
+    max-width: 10px;
+    justify-content: left;
+  }
+
+  .mail-inbox table {
+    display: flex;
+  }
+}

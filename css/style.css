@@ -9,6 +9,8 @@
 @import "basic/layout.css";
 @import "basic/helpers.css";
 @import "basic/mq.css";
+@import "basic/mq-mails.css";
+@import "basic/mq-notes.css";
 
 /* COMPONENTS */
 
