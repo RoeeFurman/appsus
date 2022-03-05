@@ -1,7 +1,7 @@
 export default {
   template: `
           <section class="note-filter">
-          <input type="text" v-model="searchKeyword" placeholder="Search by title" @input="searchByKeyword"/>
+          <input type="text" v-model="searchKeyword" placeholder="Search" @input="searchByKeyword"/>
             <select class="select" @change="setFilter" v-model="filterType" v-if="options" >
                 <option v-for="option in options" :value="option.value">{{option.txt}}</option>
             </select>

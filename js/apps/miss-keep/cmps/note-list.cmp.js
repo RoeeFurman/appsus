@@ -14,7 +14,7 @@ export default {
     	<section class="notes-list">
         <div v-if="pinnedNotes.length > 0">
           <h2>PINNED</h2>
-          <ul class="notes-area">
+          <ul class="notes-area pinned-notes">
             <li class="note-card" :key="note.id" v-for="note in pinnedNotes" :class="[note.style.backgroundColor]">
                 <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
             </li>  

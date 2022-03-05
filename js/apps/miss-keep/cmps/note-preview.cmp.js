@@ -24,7 +24,7 @@ export default {
             <header>
               <input type="text" v-model="title" @input="changeTitle(title, note.id)">
               <button @click="pinNote(note.id)">
-                <img src="img-notes/bx-pin2.svg" alt="pin">
+                <img :src="pinIconSrc" alt="pin">
               </button>
             </header>
             <div class="mainCmp">
@@ -95,6 +95,14 @@ export default {
     },
     markCheckBox(mark, todoId) {
       this.$emit("markCheckBox", mark, todoId, this.note.id);
+    },
+  },
+  computed: {
+    pinIconSrc() {
+      if (this.note.isPinned === true) {
+        return "img-notes/pin-full.svg";
+      }
+      return "img-notes/pin-empty.svg";
     },
   },
 };

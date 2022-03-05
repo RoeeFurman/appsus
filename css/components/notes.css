@@ -27,7 +27,6 @@ body {
   margin: 2rem 5rem;
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: column; */
   gap: 2rem;
 }
 
@@ -35,7 +34,6 @@ body {
   border-radius: 10px;
   width: 15rem;
   background-color: lightyellow;
-  /* padding: 2rem; */
   transition: all 200ms;
 }
 
@@ -111,19 +109,57 @@ body {
 
 .note-add {
   color: #817e80;
+  display: flex;
+  justify-content: center;
 }
 
 .note-add form {
-  padding: 2rem;
+  width: 40rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
-  background-color: #add8e6b9;
+  /* background-color: #add8e6b9; */
+  border-radius: 10px;
+  transition: all 200ms;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+    0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.note-filter {
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 20rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  /* background-color: #add8e6b9; */
+  border-radius: 10px;
+  transition: all 200ms;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+    0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.note-filter input {
+  height: 2rem;
+  border: 0.5px solid gray;
+  border-radius: 5px;
+}
+
+.note-filter select {
+  border: 0.5px solid gray;
+  border-radius: 5px;
+}
+
+.note-add button:hover {
+  background: rgb(145 145 145 / 20%);
+  border-radius: 50%;
 }
 
 .note-add input {
   height: 2rem;
-  border: none;
+  border: 0.5px solid gray;
   border-radius: 5px;
 }
 
@@ -198,6 +234,10 @@ body {
   opacity: 1;
 }
 
+.pinned-notes .note-card header button {
+  opacity: 1;
+}
+
 .note-img img {
   width: 100%;
 }
@@ -208,6 +248,10 @@ body {
 
 .note-todos .done {
   text-decoration: line-through;
+}
+
+.note-todo input {
+  background-color: transparent;
 }
 
 .note-todos ul {
@@ -237,11 +281,4 @@ body {
   resize: none;
   font-family: Arial;
   width: 100%;
-  /* word-wrap: break-word; */
-}
-
-.note-filter {
-  background-color: lightgoldenrodyellow;
-  display: flex;
-  justify-content: center;
 }

@@ -15,7 +15,6 @@ export default {
                   <note-filter  @set-filter="setFilter" @set-search="setSearch"></note-filter>
                   <note-list @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
-  
       `,
   components: {
     noteList,

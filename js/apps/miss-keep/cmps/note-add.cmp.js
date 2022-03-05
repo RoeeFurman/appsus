@@ -20,7 +20,7 @@ export default {
                       <img src="img-notes/bx-list-ul.svg" alt="list">
                   </button>
                   </div>
-                  <button type="submit">
+                  <button type="submit" class="plusBtn">
                       <img src="img-notes/bx-plus.svg" alt="plus">
                   </button>
               </form>
