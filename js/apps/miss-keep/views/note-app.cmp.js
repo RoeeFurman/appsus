@@ -64,9 +64,14 @@ export default {
     mailNote(noteId) {
       noteService.get(noteId).then((note) => {
         console.log(note);
-        const content = note.info.txt;
+        const content = "HOLA";
+        // note.info.txt;
         console.log(content);
-        eventBus.emit("sentContent", content);
+        eventBus.emit("show-msg", {
+          txt: "HOLA",
+          content: note.info.txt,
+          type: "success",
+        });
       });
     },
     addNote(noteData) {
