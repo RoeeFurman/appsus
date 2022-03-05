@@ -53,3 +53,9 @@ html {
     0 5px 15px rgba(0, 0, 0, 0.3);
   border: 1px solid gray;
 }
+
+.logo-main-icon {
+  background-color: aliceblue;
+  height: 30px;
+  padding: 1px;
+}

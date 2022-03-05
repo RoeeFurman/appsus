@@ -29,11 +29,6 @@
     box-shadow: -7px 12px 50px 9px rgba(0, 0, 0, 0.34);
     box-shadow: -7px 12px 50px 9px rgba(0, 0, 0, 0.34);
   }
-  /* } */
-
-  .side-filter {
-    /* border-bottom: 1px solid rgb(0, 0, 0); */
-  }
 
   .mail-filter {
     font-size: 1.1em;
@@ -91,10 +86,33 @@
     background: transparent;
     border: none;
   }
+
+  .mail-details-container td {
+    padding: 4px 4px 4px 10px;
+    border-bottom: 0.5px solid rgb(218, 218, 218);
+  }
 }
+
 /* FULL SCREEN */
 
 @media (min-width: 420px) {
+  .buttons {
+    margin-right: 20px;
+  }
+
+  .mail-details-container td {
+    padding: 10px 10px 10px 30px;
+    border-bottom: 0.5px solid rgb(218, 218, 218);
+  }
+
+  .main-container-details {
+    display: flex;
+    padding: 5px;
+    min-height: 600px;
+    width: 70%;
+    margin: auto;
+  }
+
   .btn-menu-mail {
     display: none;
   }
@@ -192,11 +210,26 @@
   }
 
   .mail-content .to {
-    min-width: 250px;
+    min-width: 300px;
+    margin-left: 20px;
   }
 
   .compose-icon-title {
     background: transparent;
     border: none;
+  }
+
+  .body-details {
+    vertical-align: top;
+  }
+
+  .mail-details-container {
+    margin: 0 auto;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+      0 5px 20px rgba(0, 0, 0, 0.3);
   }
 }
