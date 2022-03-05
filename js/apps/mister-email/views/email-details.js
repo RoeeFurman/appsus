@@ -7,16 +7,18 @@ export default {
   template: `
                 <section v-if="mail" class="mail-details">
                   <h1>Mail details</h1>
-                  <!-- <router-link class="back-link" to="/mail/">
-                    Back to Mails
-                    </router-link> -->
                   <div class="main-container-details">
-                  <!-- <div class="side-filter-container"> -->
-                  <!-- <side-filter/> -->
-                <!-- </div> -->
                 <div class="mail-details-container">
                   <table>
                     <tbody>
+                    <tr>
+                        <td>
+                         <b> Actions:</b>
+                          </td>
+                          <td>
+                            <button @click="deleteMail" class="delete-mail-details"><img src="img-notes/bx-trash.svg" class="icon"></button>
+                          </td>
+                        </tr>
                       <tr>
                         <td>
                           <b>Subject:</b>
@@ -49,15 +51,6 @@ export default {
                             <span>{{mail.body}}</span>
                           </td>
                         </tr>
-                        <tr>
-                        <td>
-                         <b> Actions:</b>
-                          </td>
-                          <td>
-                            <button @click="deleteMail" class="delete-mail-details"><img src="img-notes/bx-trash.svg" class="icon"></button>
-                            <!-- <span>{{mail.body}}</span> -->
-                          </td>
-                        </tr>
                       </tbody>
                         </table>
                       </div>
@@ -82,7 +75,6 @@ export default {
   created() {
     const id = this.$route.params.mailId;
     this.mailId = id;
-    // console.log(id);
     mailService.get(id).then((mail) => {
       console.log(mail);
       this.mail = mail;
@@ -103,12 +95,11 @@ export default {
         .then(() => mailService.query()
         .then((mails) => {
             eventBus.emit('updatedMails', mails)
-            this.$router.push('/mail')
-
-            console.log(mails)
+            this.$router.push('/mail')            
         }));
-      //       console.log(this.mail.id)
-      //       mailService.removeMail(this.mail.id).then(mail => console.log(mail))
+        
+        eventBus.emit('show-msg', { txt: 'Mail Deleted', type: 'failure' })
+
     },
   },
 };

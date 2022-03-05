@@ -1,4 +1,5 @@
 import { mailService } from '../services/mail-service.js';
+import { eventBus } from '../../../services/eventBus-service.js';
 
 export default {
     template: `
@@ -9,7 +10,7 @@ export default {
                 <table class="compose-table">
                     <tr>
                         <td class="first-column"> To: </td>
-                        <td><input ref="input" type="email" @input="displayNewMail" v-model="newMail.to" size=50 placeholder="maggie@appsus.com"/></td>
+                        <td><input ref="input" type="email" @input="displayNewMail" v-model="newMail.to" size=50 placeholder="maggie@appsus.com" required/></td>
                     </tr>
                     <tr>
                     <td>Subject: </td>
@@ -57,18 +58,18 @@ export default {
             console.log(this.newMail);
             mailService.addMail(this.newMail);
                 this.$emit('mailSent', this.newMail)
+
+            eventBus.emit('show-msg',{ txt: 'Mail Sent', type: 'success' })
         },
         moveToDraft(){
             this.newMail.isDraft = true;
             this.newMail.isSent = false;
             console.log(this.newMail)
             mailService.addMail(this.newMail);
-                this.$emit('mailSent', this.newMail)
+            this.$emit('mailSent', this.newMail)
+            eventBus.emit('show-msg',{ txt: 'Mail Sent to Draft', type: 'success' })
         }
         },
-    // },
     computed: {
-
-        // }
     }
 }

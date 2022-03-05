@@ -24,7 +24,6 @@ export default {
                     </div>
 
 
-
                 </div>
             </section>
     `,
@@ -62,29 +61,32 @@ export default {
         },
         updateMails(mails){
             this.mails = mails
-            console.log(mails)
+            // console.log(mails)
         },
         removeMail(id) {
             mailService.get(id).then(mail => {
                 if(!mail.isTrash) {
                     mail.isTrash = true;
+                    mail.isRead = false;
+                    mail.isSent = false;
                 mailService.save(mail).then(()=> {
                     mailService.query().then((mails)=> {
-                        console.log(mails)
+                        // console.log(mails)
                         this.mails = mails})
                 })
             } else {
                 (console.log('already in trash?!'))
                 mailService.remove(mail.id).then(()=> {
                     mailService.query().then((mails)=>{
-                        console.log(mails)
+                        // console.log(mails)
                         this.mails = mails
                     })
                 }
                 )
             }
          })
-        
+         eventBus.emit('show-msg', { txt: 'Mail Deleted', type: 'failure' })
+
         },
         contentReceived(content){
             console.log(content)
@@ -94,33 +96,33 @@ export default {
         },
         setSort(sortBy) {
             if(this.composeMode) this.composeMode = false;
-            console.log(sortBy)
+            // console.log(sortBy)
             this.sortBy = sortBy;
             return this
         },
         toggleRead(id){
-            console.log(id)
+            // console.log(id)
             mailService.get(id)
             .then((mail)=>{
-                console.log(mail)
+                // console.log(mail)
                 mail.isRead = !mail.isRead
                 mailService.save(mail).then(() => {
                     mailService.query().then(mails => {
-                        console.log(mails)
+                        // console.log(mails)
                         this.mails = mails
                     })
                 })
             })
     },
         toggleStar(id){
-            console.log(id, "star")
+            // console.log(id, "star")
             mailService.get(id)
             .then((mail)=>{
-                console.log(mail)
+                // console.log(mail)
                 mail.isStarred = !mail.isStarred
                 mailService.save(mail).then(() => {
                     mailService.query().then(mails => {
-                        console.log(mails)
+                        // console.log(mails)
                         this.mails = mails
                     })
                 })
@@ -133,10 +135,10 @@ export default {
     markAsRead(mail){
         this.currMail = mail;
         this.currMail.isRead = true;
-        console.log(this.currMail.isRead, 'currMail')
+        // console.log(this.currMail.isRead, 'currMail')
         mailService.save(this.currMail).then(()=>{
             mailService.query().then(mails => {
-                console.log(mails)
+                // console.log(mails)
                 this.mails = mails
             })
 
@@ -146,18 +148,18 @@ export default {
     computed: {
         mailsToShow(){
             let filteredMails = this.mails
+            
             const regex = new RegExp(this.filterBy.subject, 'i');
-         
             if (!this.filterBy) return filteredMails.sort((c1, c2) => c2.sentAt - c1.sentAt);
             
             if(!this.sortBy) {
                  filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && !mail.isSent && !mail.isDraft && !mail.isTrash));
                 } else if(this.sortBy === 'read'){
-                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isRead))
+                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isRead && !mail.isSent && !mail.isTrash && !mail.isDraft))
                 } else if(this.sortBy === 'starred'){
                  filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isStarred))
                 } else if(this.sortBy === 'unread'){
-                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && !mail.isRead))
+                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && !mail.isRead && !mail.isTrash && !mail.isDraft  && !mail.isSent))
                 } else if(this.sortBy === 'trash'){
                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isTrash))
                 } else if(this.sortBy === 'sent'){
@@ -181,10 +183,12 @@ export default {
             else return filteredMails.sort((c1, c2) => c1.sentAt - c2.sentAt)
 
             },
+
         calcMailsByFolders(){
             return {
-                readMails: this.mails.filter(mail => mail.isRead).length,
-                unreadMails: this.mails.filter(mail => !mail.isRead).length,
+                readMails: this.mails.filter(mail => mail.isRead && !mail.isSent && !mail.isTrash && !mail.isDraft).length,
+                unreadMails: this.mails.filter(mail => !mail.isRead && !mail.isSent && !mail.isTrash && !mail.isDraft).length,
+                trashMails: this.mails.filter(mail => mail.isTrash).length,
             }
             },
         }

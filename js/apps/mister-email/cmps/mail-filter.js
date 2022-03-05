@@ -4,16 +4,10 @@ export default {
             <label>
             Search </label>
             <span class="price-range"> 
-            <input @input="setFilter" type="text" v-model="filterBy.subject" placeholder="Search By subject..."> Sort By
-            <button @click="sortByDate"  class="search-by-bar">{{latestMails}}</button></span>
+            <input @input="setFilter" type="text" v-model="filterBy.subject" placeholder="Search By subject..."/> Sort By
+            <button @click="sortByDate"  class="search-by-bar">{{latestMails}}</button>
             <button @click="sortBySubject" class="search-by-bar">Subject: {{subjectSort}}</button></span>
-            <!-- <input type="checkbox" @input="setFilter" v-model="filterBy.isRead" :value=mailStatus /> Read -->
-            <!-- <input type="sortByDate" @input="setFilter" value=false v-model="!filterBy.isRead" /> Unread -->
-            <!-- @sortByDate="sortByDate" -->
 
-
-            <!-- <span class="price-range"> <b>Price:</b> 0 -->
-            <!-- <input @input="setFilter" type="range" v-model="filterBy.price" min="0" max="200" alt="value"> 200 </span> -->
         </section>
     `,
     data() {

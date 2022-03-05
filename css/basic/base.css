@@ -38,3 +38,18 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 7px;
 }
+
+.user-msg {
+  height: 40px;
+  width: 10em;
+  text-align: center;
+  position: fixed;
+  right: 30px;
+  bottom: 85px;
+  line-height: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+    0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid gray;
+}
