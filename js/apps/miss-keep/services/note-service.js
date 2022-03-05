@@ -25,7 +25,7 @@ function _createNotes() {
         titleTxt: "txt note",
         isPinned: false,
         info: {
-          txt: "Fullstack Me Baby!",
+          txt: "Cannot set properties of undefined",
         },
         style: {
           backgroundColor: "pink",
