@@ -22,8 +22,8 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-txt",
-        titleTxt: "txt note",
-        isPinned: false,
+        titleTxt: "Problems",
+        isPinned: true,
         info: {
           txt: "Cannot set properties of undefined",
         },
@@ -33,8 +33,32 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
+        type: "note-txt",
+        titleTxt: "Do not forget..",
+        isPinned: true,
+        info: {
+          txt: "Take a day off...",
+        },
+        style: {
+          backgroundColor: "yellow",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-txt",
+        titleTxt: "Lorem..",
+        isPinned: false,
+        info: {
+          txt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ducimus atque dicta maxime voluptas ullam maiores praesentium rerum amet doloremque minus, nobis aperiam ad eveniet sit debitis odio illo laudantium.",
+        },
+        style: {
+          backgroundColor: "green",
+        },
+      },
+      {
+        id: utilService.makeId(),
         type: "note-img",
-        titleTxt: "img note",
+        titleTxt: "Meow",
         isPinned: false,
         info: {
           url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgnL-6fb5PhgkCkH3odiqgPmhqoWm6HeRjwQ&usqp=CAU",
@@ -46,7 +70,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-todos",
-        titleTxt: "todo note",
+        titleTxt: "TODO:",
         isPinned: true,
         info: {
           todos: [
@@ -74,8 +98,8 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-img",
-        titleTxt: "img note",
-        isPinned: false,
+        titleTxt: "Panda",
+        isPinned: true,
         info: {
           url: "https://addons-media.operacdn.com/media/CACHE/images/themes/45/123745/1.0-rev1/images/d43cd5fe-8407-46bb-858f-54d825dead48/c31dc78b6602cb4bf0a8d2b93385e5a2.jpg",
         },
@@ -85,8 +109,20 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
+        type: "note-img",
+        titleTxt: "Raccoon",
+        isPinned: true,
+        info: {
+          url: "https://media.istockphoto.com/photos/little-raccoon-on-tree-picture-id514622028?k=6&m=514622028&s=612x612&w=0&h=oa6bEuRd9EB_D72qJ5UD57dBfnLWz7onQDm6DFJSVLc=",
+        },
+        style: {
+          backgroundColor: "orange",
+        },
+      },
+      {
+        id: utilService.makeId(),
         type: "note-txt",
-        titleTxt: "txt note",
+        titleTxt: "Umm....",
         isPinned: false,
         info: {
           txt: "Learn Vue they said, it will be fun they said.",
@@ -97,8 +133,20 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
+        type: "note-img",
+        titleTxt: "Kuala",
+        isPinned: true,
+        info: {
+          url: "https://ichef.bbci.co.uk/news/976/cpsprodpb/02C2/production/_122360700_gettyimages-1280424615.jpg",
+        },
+        style: {
+          backgroundColor: "teal",
+        },
+      },
+      {
+        id: utilService.makeId(),
         type: "note-video",
-        titleTxt: "video note",
+        titleTxt: "ZHU - Cercle",
         isPinned: true,
         info: {
           url: "https://www.youtube.com/embed/XHNHq1mC0VQ",
@@ -109,20 +157,48 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
+        type: "note-todos",
+        titleTxt: "List:",
+        isPinned: false,
+        info: {
+          todos: [
+            {
+              id: utilService.makeId(),
+              txt: "Wake up early",
+              isDone: false,
+            },
+            {
+              id: utilService.makeId(),
+              txt: "Make some css changes in my app",
+              isDone: false,
+            },
+            {
+              id: utilService.makeId(),
+              txt: "Laugh more",
+              isDone: true,
+            },
+          ],
+        },
+        style: {
+          backgroundColor: "gray",
+        },
+      },
+      {
+        id: utilService.makeId(),
         type: "note-img",
-        titleTxt: "img note",
+        titleTxt: "Parrot buddy",
         isPinned: false,
         info: {
           url: "https://lafeber.com/pet-birds/wp-content/uploads/2020/04/gamaliel-troubleson-u9PsLITXMCQ-unsplash-e1587001975887.jpg",
         },
         style: {
-          backgroundColor: "red",
+          backgroundColor: "yellow",
         },
       },
       {
         id: utilService.makeId(),
         type: "note-txt",
-        titleTxt: "txt note",
+        titleTxt: "My first note",
         isPinned: false,
         info: {
           txt: "Things aren’t always #000000 and #FFFFFF",
@@ -134,7 +210,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-video",
-        titleTxt: "video note",
+        titleTxt: "Ozora Festival",
         isPinned: false,
         info: {
           url: "https://www.youtube.com/embed/S3K6pUOAmTE",
