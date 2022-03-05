@@ -10,7 +10,6 @@
 @import "basic/helpers.css";
 @import "basic/mq.css";
 @import "basic/mq-mails.css";
-@import "basic/mq-notes.css";
 
 /* COMPONENTS */
 
@@ -19,3 +18,5 @@
 @import "components/emails.css";
 @import "components/notes.css";
 @import "components/about.css";
+
+@import "basic/mq-notes.css";

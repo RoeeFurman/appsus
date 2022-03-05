@@ -6,23 +6,25 @@ export default {
               <form @submit="addNote">
                   <input type="text" class="title" placeholder="Note title" v-model="titleTxt">
                   <input type="text" class="content" :placeholder="placeholderByType" v-model="info">
-                  <div class="add-actions">
-                  <button type="button" @click="setType('note-txt')">
-                      <img src="img-notes/bx-text.svg" alt="text">
-                  </button>
-                  <button type="button" @click="setType('note-img')">
-                      <img src="img-notes/bx-image.svg" alt="image">
-                  </button>
-                  <button type="button" @click="setType('note-video')">
-                      <img src="img-notes/bxl-youtube.svg" alt="youtube">
-                  </button>
-                  <button type="button" @click="setType('note-todos')">
-                      <img src="img-notes/bx-list-ul.svg" alt="list">
-                  </button>
+                  <div class="actions-container">
+                    <div class="add-actions">
+                      <button type="button" @click="setType('note-txt')">
+                          <img src="img-notes/bx-text.svg" alt="text">
+                      </button>
+                      <button type="button" @click="setType('note-img')">
+                          <img src="img-notes/bx-image.svg" alt="image">
+                      </button>
+                      <button type="button" @click="setType('note-video')">
+                          <img src="img-notes/bxl-youtube.svg" alt="youtube">
+                      </button>
+                      <button type="button" @click="setType('note-todos')">
+                          <img src="img-notes/bx-list-ul.svg" alt="list">
+                      </button>
+                    </div>
+                    <button type="submit" class="plusBtn">
+                        <img src="img-notes/bx-plus.svg" alt="plus">
+                    </button>
                   </div>
-                  <button type="submit" class="plusBtn">
-                      <img src="img-notes/bx-plus.svg" alt="plus">
-                  </button>
               </form>
           </section>
     

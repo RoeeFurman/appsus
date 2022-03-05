@@ -1,3 +1,7 @@
+.note-app * {
+  box-sizing: border-box;
+}
+
 body {
   background-color: rgb(245, 246, 248);
 }
@@ -114,12 +118,10 @@ body {
 }
 
 .note-add form {
-  width: 40rem;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
-  /* background-color: #add8e6b9; */
   border-radius: 10px;
   transition: all 200ms;
   box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
@@ -157,15 +159,18 @@ body {
   border-radius: 50%;
 }
 
-.note-add input {
+.note-add input,
+.note-filter input,
+.note-filter select {
+  padding: 0 0.5rem;
   height: 2rem;
   border: 0.5px solid gray;
   border-radius: 5px;
 }
 
-.note-add .content {
+/* .note-add .content {
   width: 15rem;
-}
+} */
 
 .note-app .header {
   display: flex;
@@ -265,7 +270,7 @@ body {
 .note-add .add-actions {
   width: 10rem;
   display: flex;
-  justify-content: space-evenly;
+  gap: 0.5rem;
 }
 
 .note-add .add-actions button:hover {
@@ -281,4 +286,13 @@ body {
   resize: none;
   font-family: Arial;
   width: 100%;
+}
+
+.actions-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.actions-container .add-actions {
+  flex-grow: 1;
 }
