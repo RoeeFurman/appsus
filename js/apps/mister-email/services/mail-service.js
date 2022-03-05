@@ -10,7 +10,6 @@ export const mailService = {
     get,
     save,
     addMail,
-    // removeMail
 };
 
 
@@ -18,14 +17,13 @@ function query() {
     return storageService.query(MAILS_KEY);
 }
 
-function remove(bookId) {
-    return storageService.remove(MAILS_KEY, bookId);
+function remove(mailId) {
+    return storageService.remove(MAILS_KEY, mailId);
 }
 
 
-
-function get(bookId) {
-    return storageService.get(MAILS_KEY, bookId)
+function get(mailId) {
+    return storageService.get(MAILS_KEY, mailId)
 }
 
 function save(mail) {
@@ -167,13 +165,3 @@ function _createMails() {
     }
     return mails;
 }
-
-
-// function _setNextPrevbookId(book) {
-//   return storageService.query(MAILS_KEY).then(books => {
-//     const bookIdx = books.findIndex(currbook => currbook.id === book.id)
-//     book.nextbookId = (books[bookIdx + 1]) ? books[bookIdx + 1].id : books[0].id
-//     book.prevbookId = (books[bookIdx - 1]) ? books[bookIdx - 1].id : books[books.length - 1].id
-//     return book
-//   })
-// }

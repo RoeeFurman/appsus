@@ -14,7 +14,7 @@ export default {
                 </div>
                 <div class="main-container">
                     <div class="side-search">
-                        <side-filter @sortBy="setSort"/>
+                        <side-filter :calcMailsByFolder="calcMailsByFolders" @sortBy="setSort"/>
                         <button v-if="!composeMode" @click="composeMode = !composeMode" class="compose-icon"><img src="img-notes/bx-message-rounded-add.svg" title="Create New Mail"></button>
                     </div>
                     <div class="sec-container" >
@@ -65,11 +65,26 @@ export default {
             console.log(mails)
         },
         removeMail(id) {
-            mailService.remove(id)
-                .then(() => {
-                    const idx = this.mails.findIndex((mail) => mail.id === id);
-                    this.mails.splice(idx, 1);
+            mailService.get(id).then(mail => {
+                if(!mail.isTrash) {
+                    mail.isTrash = true;
+                mailService.save(mail).then(()=> {
+                    mailService.query().then((mails)=> {
+                        console.log(mails)
+                        this.mails = mails})
                 })
+            } else {
+                (console.log('already in trash?!'))
+                mailService.remove(mail.id).then(()=> {
+                    mailService.query().then((mails)=>{
+                        console.log(mails)
+                        this.mails = mails
+                    })
+                }
+                )
+            }
+         })
+        
         },
         contentReceived(content){
             console.log(content)
@@ -113,7 +128,6 @@ export default {
     },
         addMail(mail){
             this.mails.unshift(mail);
-
             this.composeMode = false;
     },
     markAsRead(mail){
@@ -165,7 +179,13 @@ export default {
                 else return timeDiff = c1.subject.localeCompare(c2.subject)
             })
             else return filteredMails.sort((c1, c2) => c1.sentAt - c2.sentAt)
-            
+
+            },
+        calcMailsByFolders(){
+            return {
+                readMails: this.mails.filter(mail => mail.isRead).length,
+                unreadMails: this.mails.filter(mail => !mail.isRead).length,
             }
+            },
         }
 };
