@@ -1,4 +1,4 @@
-@media (max-width: 420px) {
+@media (max-width: 576px) {
   .home-page-icons {
     padding: 10px;
     display: flex;
@@ -16,7 +16,7 @@
   }
 }
 
-@media (min-width: 420px) {
+@media (min-width: 576px) {
   .home-page-logo {
     padding-top: 130px;
     padding-bottom: 50px;
