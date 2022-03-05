@@ -1,0 +1,10 @@
+@media (max-width: 420px) {
+  .home-page-icons {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 20px;
+    /* border: 1px solid gray; */
+  }
+}

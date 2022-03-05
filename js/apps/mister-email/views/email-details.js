@@ -6,7 +6,7 @@ import sideFilter from "../cmps/side-filter.js"
 export default {
   template: `
                 <section v-if="mail" class="mail-details">
-                  <h1>Mail details</h1>
+                  <div class="mail-title"><router-link to="/mail">Mail app</router-link></div>
                   <div class="main-container-details">
                 <div class="mail-details-container">
                   <table>
@@ -44,10 +44,10 @@ export default {
                            </td>
                         </tr>
                         <tr>
-                        <td>
+                        <td class="body-details">
                          <b> Body:</b>
                           </td>
-                          <td>
+                          <td class="body-details">
                             <span>{{mail.body}}</span>
                           </td>
                         </tr>

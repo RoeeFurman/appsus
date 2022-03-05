@@ -1,37 +1,15 @@
 .email-app * {
-  /* margin-left: 1px; */
-  /* padding: 1px; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-.email-app,
-.mail-details h1 {
-  margin-left: 20px;
 }
 
 .unReadMail {
-  /* background-color: aliceblue; */
   font-weight: bold;
-  /* border-bottom: 1px solid gray; */
 }
 
 .main-container {
   display: flex;
   flex-direction: row;
   padding: 5px;
-}
-
-.side-search,
-.side-filter-container {
-  border: 1px solid gray;
-  width: 140px;
-}
-
-.sec-container {
-  border-right: 1px solid rgb(156, 156, 156);
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  width: 100%;
-  min-height: 600px;
 }
 
 .side-filter li {
@@ -44,10 +22,6 @@
 .side-filter ul {
   padding: 5px;
 }
-/* 
-.mail-inbox {
-  border-bottom: 1px solid gray;
-} */
 
 .mail-filter {
   padding: 15px;
@@ -85,34 +59,24 @@
   border: none;
 }
 
-.email-compose {
-  display: flex;
-  flex-direction: column;
-  padding: 0 30px 30px;
-}
-
-.email-compose input {
-  border-radius: 5px;
-  height: 2em;
-}
-
 .to {
   min-width: 200px;
+  display: inline-block;
   /* font-size: 1em; */
 }
 
 .subject {
   min-width: 350px;
+  display: inline-block;
 }
 
-.preview-table {
-  max-width: 1000px;
+.sent-at {
+  display: inline-block;
 }
 
 .mail-details-container {
   margin: 0 auto;
   border: 1px solid gray;
-  /* border-left: none; */
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -134,13 +98,6 @@
   padding: 5px;
   min-height: 600px;
 }
-
-/* .side-filter-container {
-  cursor: pointer;
-  border: 1px solid rgb(0, 0, 0);
-  border-right: none;
-  padding: 10px;
-} */
 
 .back-link {
   padding: 20px 100px;
@@ -169,30 +126,8 @@
   font-weight: bolder;
 }
 
-.first-column {
-  width: 100px;
-}
-
-.compose-table td {
-  padding: 10px 10px 10px 30px;
-}
-
-.compose-table input[type="text"],
-input[type="email"] {
-  width: 400px;
-}
-
 .draft-icon {
   height: 20px;
-}
-
-.compose-new-mail {
-  border: 1px solid gray;
-  background-color: white;
-  width: 90%;
-  margin: 30px auto;
-  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
-    0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .compose-icon img {

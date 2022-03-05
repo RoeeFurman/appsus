@@ -6,23 +6,21 @@ export default {
     template: `
             <section >
                 <div :class="displayReadUnreadClass">
-                    <table class="preview-table">
+                    <div class="preview-table">
                         <router-link :to="'/mail/'+mail.id" @click="markAsRead(mail)">
                         <tbody>
-                            <tr>
-                                <td class="to">
+                                <div class="to">
                                      {{mail.to}} 
-                                </td>
-                                <td class="subject">
+                                </div>
+                                <div class="subject">
                                     SUBJECT: {{mail.subject}} 
-                                </td>
-                                <td>
+                                </div>
+                                <div class="sent-at">
                                     {{sentAtToDisplay}}
-                                </td>
-                            </tr>
+                                </div>
                         </tbody>
                         </router-link>
-                    </table>
+                        </div>
                 </div>
             </section>
     `,

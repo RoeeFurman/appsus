@@ -2,18 +2,159 @@
   .email-app .main-container {
     display: flex;
     flex-direction: column-reverse;
+    border: 1px solid lightgray;
+  }
+
+  .email-app h1 {
+    margin-left: 20px;
   }
 
   .email-app .side-filter {
     display: none;
   }
 
-  .mail-inbox {
-    max-width: 10px;
-    justify-content: left;
+  .mail-filter {
+    font-size: 1.1em;
   }
 
-  .mail-inbox table {
+  .mail-inbox {
     display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .search-input {
+    width: 150px;
+    line-height: 2em;
+    height: 1.7em;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+  }
+
+  .mail-title {
+    font-size: 20px;
+    margin-left: 10px;
+    font-weight: 500;
+    padding: 5px;
+    display: inline-block;
+  }
+
+  .compose-new-mail {
+    border: 1px solid gray;
+    background-color: white;
+    min-width: 280px;
+    min-height: 400px;
+    /* padding: 5px; */
+    margin: auto;
+    box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+      0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  .compose-new-mail td {
+    padding: 10px;
+  }
+
+  .body-details {
+    vertical-align: top;
+    height: 400px;
+  }
+}
+
+/* FULL SCREEN */
+
+@media (min-width: 420px) {
+  .email-app,
+  .mail-details h1 {
+    margin-left: 20px;
+  }
+
+  .side-search,
+  .side-filter-container {
+    border: 1px solid gray;
+    width: 140px;
+  }
+
+  .email-compose {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px 30px;
+  }
+
+  .preview-table {
+    max-width: 1000px;
+    display: flex;
+  }
+
+  .compose-new-mail {
+    border: 1px solid gray;
+    background-color: white;
+    min-width: 700px;
+    max-width: 850px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent,
+      0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .first-column {
+    width: 100px;
+  }
+
+  .compose-table td {
+    padding: 10px 10px 10px 30px;
+  }
+
+  .compose-table input[type="text"],
+  input[type="email"] {
+    width: 500px;
+  }
+
+  .compose-table textarea {
+    width: 500px;
+  }
+
+  .sec-container {
+    border-right: 1px solid rgb(156, 156, 156);
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    min-height: 600px;
+  }
+
+  .mail-search {
+    display: flex;
+  }
+
+  .mail-title {
+    font-size: 28px;
+    font-weight: 500;
+    padding: 10px;
+    display: inline-block;
+  }
+
+  .search-input {
+    width: 240px;
+    line-height: 2em;
+    height: 1.7em;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 1px;
+    margin-bottom: 10px;
+    margin: 0 20px;
+  }
+
+  .mail-content .subject {
+    min-width: 400px;
+  }
+
+  .mail-content .to {
+    min-width: 250px;
   }
 }

@@ -10,7 +10,7 @@ export default {
     template: `
         <section class="email-app app-main">
     <div class="main-nav">
-            <h1>Mail app</h1>
+    <div class="mail-title"><router-link to="/mail">Mail app</router-link></div>
                 </div>
                 <div class="main-container">
                     <div class="side-search">
@@ -19,7 +19,7 @@ export default {
                     </div>
                     <div class="sec-container" >
                         <mail-filter @filtered="setFilter" @sortByDate="sortByDate" @sortBySubject="sortBySubject"/>
-                        <email-compose v-if="composeMode" @mailSent="addMail"></email-compose>
+                        <email-compose v-if="composeMode" @mailSent="addMail" @backToMails="backToMails"></email-compose>
                         <mail-list v-else :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead" @toggleStar="toggleStar" @markAsRead="markAsRead"/>
                     </div>
 
@@ -143,6 +143,9 @@ export default {
             })
 
         })
+    }, 
+    backToMails(){
+        this.composeMode = false;
     }
 },
     computed: {
