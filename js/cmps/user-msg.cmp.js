@@ -24,9 +24,10 @@ export default {
       }, 3000);
     },
     saveContent(content) {
+      console.log(content);
       this.content = content;
-      console.log(this.content);
-      eventBus.emit("showInMail", this.content);
+      debugger;
+      this.router.push("/mail");
     },
   },
   unmounted() {

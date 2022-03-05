@@ -63,15 +63,32 @@ export default {
     },
     mailNote(noteId) {
       noteService.get(noteId).then((note) => {
-        console.log(note);
-        const content = "HOLA";
-        // note.info.txt;
-        console.log(content);
-        eventBus.emit("show-msg", {
-          txt: "HOLA",
-          content: note.info.txt,
-          type: "success",
+        let body = "";
+        switch (note.type) {
+          case "note-txt":
+            body = note.info.txt;
+            break;
+
+          case "note-img":
+          case "note-video":
+            body = note.info.url;
+            break;
+
+          case "note-todos":
+            body = note.info.todos.map((todo) => "- " + todo.txt).join("\n");
+            break;
+        }
+
+        this.$router.push({
+          path: "/mail",
+          query: { subject: note.titleTxt, body },
         });
+        // console.log(content);
+        // eventBus.emit("show-msg", {
+        //   txt: "click to open mail",
+        //   content: content,
+        //   type: "success",
+        // });
       });
     },
     addNote(noteData) {

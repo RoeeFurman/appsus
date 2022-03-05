@@ -1,8 +1,9 @@
-import { mailService } from '../services/mail-service.js';
-import { eventBus } from '../../../services/eventBus-service.js';
+import { mailService } from "../services/mail-service.js";
+import { eventBus } from "../../../services/eventBus-service.js";
 
 export default {
-    template: `
+  props: ["initialValues"],
+  template: `
         <section class="email-compose">
             <h1>Compose New Mail:</h1>
             <form @submit.prevent>
@@ -35,45 +36,53 @@ export default {
         </form>
         </section>
     `,
-    data() {
-        return {
-            newMail: {
-                // id: '',
-                subject: '',
-                body: '',
-                isRead: false, 
-                isSent: true, 
-                isDraft: false,
-                isStarred: false,
-                isTrash: false,
-                sentAt: new Date(),
-                to: ''
-            },
-        };
-    },
-    methods: {
-        displayNewMail(){
-        },
-        send(){
-            if(!this.newMail.to || !this.newMail.subject) return
-            console.log(this.newMail);
-            mailService.addMail(this.newMail);
-                this.$emit('mailSent', this.newMail)
-
-            eventBus.emit('show-msg',{ txt: 'Mail Sent', type: 'success' })
-        },
-        moveToDraft(){
-            this.newMail.isDraft = true;
-            this.newMail.isSent = false;
-            console.log(this.newMail)
-            mailService.addMail(this.newMail);
-            this.$emit('mailSent', this.newMail)
-            eventBus.emit('show-msg',{ txt: 'Mail Sent to Draft', type: 'success' })
-        },
-        backToMails(){
-            this.$emit('backToMails', true)
-        }
-        },
-    computed: {
+  data() {
+    return {
+      newMail: {
+        // id: '',
+        subject: "",
+        body: "",
+        isRead: false,
+        isSent: true,
+        isDraft: false,
+        isStarred: false,
+        isTrash: false,
+        sentAt: new Date(),
+        to: "",
+      },
+    };
+  },
+  created() {
+    if (this.initialValues) {
+      this.newMail.subject = this.initialValues.subject;
+      this.newMail.body = this.initialValues.body;
+    //   this.newMail = {
+    //     ...this.newMail,
+    //     ...this.initialValues,
+    //   };
     }
-}
+  },
+  methods: {
+    displayNewMail() {},
+    send() {
+      if (!this.newMail.to || !this.newMail.subject) return;
+      console.log(this.newMail);
+      mailService.addMail(this.newMail);
+      this.$emit("mailSent", this.newMail);
+
+      eventBus.emit("show-msg", { txt: "Mail Sent", type: "success" });
+    },
+    moveToDraft() {
+      this.newMail.isDraft = true;
+      this.newMail.isSent = false;
+      console.log(this.newMail);
+      mailService.addMail(this.newMail);
+      this.$emit("mailSent", this.newMail);
+      eventBus.emit("show-msg", { txt: "Mail Sent to Draft", type: "success" });
+    },
+    backToMails() {
+      this.$emit("backToMails", true);
+    },
+  },
+  computed: {},
+};
