@@ -111,14 +111,36 @@ export default {
       if (!this.filterBy && !this.searchBy) return this.notes;
       let notesToShow = this.notes;
       if (this.searchBy) {
-        notesToShow = notesToShow.filter((note) =>
-          note.titleTxt.toLowerCase().includes(this.searchBy.toLowerCase())
-        );
+        notesToShow = notesToShow.filter((note) => {
+          const filteredBy = note.titleTxt
+            .toLowerCase()
+            .includes(this.searchBy.toLowerCase());
+          if (filteredBy) {
+            return true;
+          }
+
+          if (note.type === "note-txt") {
+            return note.info.txt
+              .toLowerCase()
+              .includes(this.searchBy.toLowerCase());
+          }
+
+          if (note.type === "note-todos") {
+            return note.info.todos.some((todo) => {
+              return todo.txt
+                .toLowerCase()
+                .includes(this.searchBy.toLowerCase());
+            });
+          }
+
+          return false;
+        });
       }
-      if (this.filterBy === "All")
+
+      if (this.filterBy) {
         return notesToShow.filter((note) => note.type === this.filterBy);
-      if (this.filterBy)
-        return notesToShow.filter((note) => note.type === this.filterBy);
+      }
+
       return notesToShow;
     },
   },

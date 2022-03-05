@@ -6,7 +6,7 @@ export default {
                 <ul>
                   <li v-for="todo in openTodos" :key="todo.id">
                     <input type="checkbox" :checked="todo.isDone" @change="markCheckBox($event.target.checked, todo.id)">
-                    <input type="text" :value="todo.txt" @change="changeTodo($event.target.value, todo.id)">
+                    <textarea type="text" :value="todo.txt" @change="changeTodo($event.target.value, todo.id)"></textarea>
                   </li>
                 </ul>
               </div>

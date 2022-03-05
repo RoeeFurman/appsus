@@ -15,17 +15,17 @@ export default {
         <div v-if="pinnedNotes.length > 0">
           <h2>PINNED</h2>
           <ul class="notes-area">
-                <li class="note-card" v-for="note in pinnedNotes" :class="[note.style.backgroundColor]">
-                    <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
-                </li>  
+            <li class="note-card" :key="note.id" v-for="note in pinnedNotes" :class="[note.style.backgroundColor]">
+                <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+            </li>  
           </ul> 
         </div>
         <div v-if="notPinnedNotes.length > 0">
             <h2>OTHERS</h2>
             <ul class="notes-area">
-                  <li class="note-card" v-for="note in notPinnedNotes" :class="[note.style.backgroundColor]">
-                      <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
-                  </li>
+              <li class="note-card" :key="note.id" v-for="note in notPinnedNotes" :class="[note.style.backgroundColor]">
+                  <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
+              </li>
             </ul>
         </div>
         </section>
