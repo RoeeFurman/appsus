@@ -9,12 +9,17 @@ import { eventBus } from "../../../services/eventBus-service.js";
 export default {
     template: `
         <section class="email-app app-main">
+            <side-filter :calcMailsByFolder="calcMailsByFolders" @sortBy="setSort" class="side-filter-mobile" v-if="sideMenu"/>
     <div class="main-nav">
-    <div class="mail-title"><router-link to="/mail">Mail app</router-link></div>
+    <div class="mail-title"><router-link to="/mail">Mail app</router-link>
+     <button v-if="!composeMode" @click="composeMode = !composeMode" class="compose-icon-title">
+        <img src="img-notes/bx-message-rounded-add.svg" title="Create New Mail">Compose New Mail</button>
+        <button class="btn-menu-mail" @click="toggleMenu">☰</button>
+            </div>
                 </div>
                 <div class="main-container">
                     <div class="side-search">
-                        <side-filter :calcMailsByFolder="calcMailsByFolders" @sortBy="setSort"/>
+                        <side-filter class="side-filter-full-screen" :calcMailsByFolder="calcMailsByFolders" @sortBy="setSort"/>
                         <button v-if="!composeMode" @click="composeMode = !composeMode" class="compose-icon"><img src="img-notes/bx-message-rounded-add.svg" title="Create New Mail"></button>
                     </div>
                     <div class="sec-container" >
@@ -22,8 +27,6 @@ export default {
                         <email-compose v-if="composeMode" @mailSent="addMail" @backToMails="backToMails"></email-compose>
                         <mail-list v-else :mails="mailsToShow" @remove="removeMail" @toggleRead="toggleRead" @toggleStar="toggleStar" @markAsRead="markAsRead"/>
                     </div>
-
-
                 </div>
             </section>
     `,
@@ -32,10 +35,11 @@ export default {
     mailFilter,
     sideFilter,
     emailCompose,
-    eventBus
-    },
-    data() {
-        return {
+    eventBus,
+},
+data() {
+    return {
+            sideMenu:false,
             mails: null,
             filterBy: {
                 subject: '',
@@ -53,6 +57,9 @@ export default {
         eventBus.on('sentContent',this.contentReceived)
     },
     methods: {
+        toggleMenu(){
+            this.sideMenu =!this.sideMenu
+        },
         sortBySubject(){
             this.setMailsBySubject = !this.setMailsBySubject
         },

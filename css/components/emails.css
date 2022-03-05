@@ -12,13 +12,6 @@
   padding: 5px;
 }
 
-.side-filter li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  border-bottom: 1px solid rgb(235, 235, 235);
-}
-
 .side-filter ul {
   padding: 5px;
 }
@@ -33,6 +26,11 @@
 .mail-list button {
   background: transparent;
   border: none;
+}
+
+.mail-title {
+  display: flex;
+  justify-content: space-between;
 }
 
 .mail-inbox {

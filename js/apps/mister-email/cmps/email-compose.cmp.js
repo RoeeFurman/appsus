@@ -19,7 +19,7 @@ export default {
                     <tr>
                         <td><b>Body: </b></td>
                         <td>
-                            <textarea v-model="newMail.body" rows="10" cols="40" placeholder="Your Mail here"></textarea>
+                            <textarea v-model="newMail.body" rows="10" cols="30" placeholder="Your Mail here"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -27,11 +27,11 @@ export default {
                         <td>
                             <button @click="send">Send <img src="img-notes/bxs-paper-plane.svg"></button>
                             <button @click="moveToDraft">Draft <img src="img-notes/draft-icon.png" class="draft-icon"></button>
-                            <button @click="backToMails" class="back-link"><img src="img-notes/bx-left-arrow-circle.svg" class="icon">Back to Mails</button>
                         </td>
                     </tr>
                 </table>
             </div>
+            <button @click="backToMails" class="back-link"><img src="img-notes/bx-left-arrow-circle.svg" class="icon">Back to Mails</button>
         </form>
         </section>
     `,

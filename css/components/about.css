@@ -9,3 +9,13 @@
     rgb(195, 245, 255) 100%
   );
 }
+
+.about-page p {
+  padding: 10px;
+}
+
+.about-title {
+  font-size: 20px;
+  padding: 5px;
+  font-weight: 700;
+}

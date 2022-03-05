@@ -7,4 +7,20 @@
     border-radius: 20px;
     /* border: 1px solid gray; */
   }
+
+  .home-page-logo {
+    padding-top: 80px;
+    padding-bottom: 30px;
+    font-size: 35px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+@media (min-width: 420px) {
+  .home-page-logo {
+    padding-top: 130px;
+    padding-bottom: 50px;
+    font-size: 35px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
 }

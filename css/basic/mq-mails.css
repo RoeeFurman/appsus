@@ -5,12 +5,29 @@
     border: 1px solid lightgray;
   }
 
+  .side-filter li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid gray;
+  }
+
   .email-app h1 {
     margin-left: 20px;
   }
 
-  .email-app .side-filter {
+  .side-filter-full-screen {
     display: none;
+  }
+
+  .side-filter-mobile {
+    position: fixed;
+    background-color: rgb(236, 236, 236);
+    top: 108px;
+    right: 0;
+    width: 140px;
+    box-shadow: -7px 12px 50px 9px rgba(0, 0, 0, 0.34);
+    box-shadow: -7px 12px 50px 9px rgba(0, 0, 0, 0.34);
   }
 
   .mail-filter {
@@ -62,13 +79,28 @@
 
   .body-details {
     vertical-align: top;
-    height: 400px;
+    min-height: 200px;
+  }
+
+  .compose-icon-title {
+    background: transparent;
+    border: none;
   }
 }
-
 /* FULL SCREEN */
 
 @media (min-width: 420px) {
+  .btn-menu-mail {
+    display: none;
+  }
+
+  .side-filter li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(235, 235, 235);
+  }
+
   .email-app,
   .mail-details h1 {
     margin-left: 20px;
@@ -156,5 +188,10 @@
 
   .mail-content .to {
     min-width: 250px;
+  }
+
+  .compose-icon-title {
+    background: transparent;
+    border: none;
   }
 }
