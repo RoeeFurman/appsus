@@ -51,14 +51,17 @@ function _createNotes() {
         info: {
           todos: [
             {
+              id: utilService.makeId(),
               txt: "Do not cry when console log prints undefined",
               isDone: false,
             },
             {
+              id: utilService.makeId(),
               txt: "Do not cry when you fix a bug but then 10000 more appear",
               isDone: true,
             },
             {
+              id: utilService.makeId(),
               txt: "Do not cry when it is ten minutes to submission and your project is far from being done",
               isDone: true,
             },

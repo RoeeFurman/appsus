@@ -28,7 +28,7 @@ export default {
               </button>
             </header>
             <div class="mainCmp">
-              <component :is="note.type" :info="note.info" @changeTxt="changeTxt($event, note.id)"></component>
+              <component :is="note.type" :info="note.info" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt($event, note.id)"></component>
             </div>
             <div class="actions">
                 <button @click="removeNote(note.id)">
@@ -89,6 +89,12 @@ export default {
     },
     changeTxt(txt, noteId) {
       this.$emit("changeTxt", txt, noteId);
+    },
+    changeTodo(content, todoId) {
+      this.$emit("changeTodo", content, todoId, this.note.id);
+    },
+    markCheckBox(mark, todoId) {
+      this.$emit("markCheckBox", mark, todoId, this.note.id);
     },
   },
 };

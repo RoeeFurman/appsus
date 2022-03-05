@@ -1,3 +1,5 @@
+import { utilService } from "../../../services/util-service.js";
+
 export default {
   template: `
           <section class="note-add">
@@ -49,7 +51,7 @@ export default {
       if (this.type === "note-todos") {
         var todos = this.info.split(",");
         todos = todos.map((todo) => {
-          todo = { txt: todo.trim(), isDone: false };
+          todo = { id: utilService.makeId(), txt: todo.trim(), isDone: false };
           return todo;
         });
         note.info = { todos };

@@ -11,7 +11,7 @@ export default {
                     <p class="sub-heading">You do you, and we will do the rest</p>
                   </div>
                   <note-add @addNote="addNote"></note-add>
-                  <note-list @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
+                  <note-list @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @updateColor="updateColor" @noteRemoved="deleteNote" :notes="notesToShow"></note-list>
               </section>
   
       `,
@@ -78,6 +78,19 @@ export default {
     changeTxt(txt, id) {
       const note = this.notes.find((note) => note.id === id);
       note.info.txt = txt;
+      noteService.updateNote(note);
+    },
+    changeTodo(content, todoId, noteId) {
+      const note = this.notes.find((note) => note.id === noteId);
+      const todo = note.info.todos.find((todo) => todo.id === todoId);
+      todo.txt = content;
+      noteService.updateNote(note);
+    },
+    markCheckBox(mark, todoId, noteId) {
+      const note = this.notes.find((note) => note.id === noteId);
+      const todo = note.info.todos.find((todo) => todo.id === todoId);
+      todo.isDone = mark;
+      console.log(todo);
       noteService.updateNote(note);
     },
   },
