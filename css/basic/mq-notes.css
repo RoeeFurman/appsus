@@ -21,6 +21,10 @@
   .note-filter select {
     display: block;
   }
+
+  .note-card button {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 992px) {

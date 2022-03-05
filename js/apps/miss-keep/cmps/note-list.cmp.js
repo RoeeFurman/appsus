@@ -64,7 +64,7 @@ export default {
       return this.notes.filter((note) => note.isPinned === false);
     },
   },
-  mounted() {
+  updated() {
     setTimeout(() => {
       const isoPinned = new Isotope(".pinned-notes", {
         itemSelector: ".note-card",
