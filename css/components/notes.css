@@ -225,3 +225,11 @@ body {
   background: rgb(145 145 145 / 20%);
   border-radius: 50%;
 }
+
+.note-txt textarea {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  min-height: 5rem;
+}
