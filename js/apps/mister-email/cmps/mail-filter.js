@@ -49,8 +49,8 @@ export default {
             else return ' Latest ↓'
         },
         subjectSort(){
-            if(this.sortByAbc) return ' A-z'
-            else return ' Z-a'
+            if(this.sortByAbc) return ' Z-a'
+            else return ' A-z'
         }
     }
 }

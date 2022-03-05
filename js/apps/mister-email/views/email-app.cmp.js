@@ -132,7 +132,6 @@ export default {
     computed: {
         mailsToShow(){
             let filteredMails = this.mails
-            let filteredAndSortedBySubjectMails = [];
             const regex = new RegExp(this.filterBy.subject, 'i');
          
             if (!this.filterBy) return filteredMails.sort((c1, c2) => c2.sentAt - c1.sentAt);
@@ -152,34 +151,21 @@ export default {
                 } else if(this.sortBy === 'draft'){
                 filteredMails = this.mails.filter(mail => (regex.test(mail.subject) && mail.isDraft))
                 }
-                
-            if(this.setMailsBySubject) return filteredAndSortedBySubjectMails = filteredMails.sort((c1, c2) => c1.subject.localeCompare(c2.subject));
+                                
+            if(this.setMailsBySubject && this.setMailsByLatest) return filteredMails.sort((c1, c2) => {
+               var timeDiff = (c2.sentAt - c1.sentAt);
+               if(timeDiff !== 0) return timeDiff
+               else return timeDiff = c1.subject.localeCompare(c2.subject)
+            })
             
-            // console.log(this.setMailsByLatest, 'latest up?')
             if (this.setMailsByLatest) return filteredMails.sort((c1, c2) => c2.sentAt - c1.sentAt)
-            else return  filteredMails.sort((c1, c2) => c1.sentAt - c2.sentAt);
+            else if(this.setMailsBySubject) return filteredMails.sort((c1, c2) => {
+                var timeDiff = (c1.sentAt - c2.sentAt)
+                if(timeDiff !== 0) return timeDiff
+                else return timeDiff = c1.subject.localeCompare(c2.subject)
+            })
+            else return filteredMails.sort((c1, c2) => c1.sentAt - c2.sentAt)
             
-                // console.log(this.setMailsByLatest, 'time sort')
-                // console.log(this.setMailsBySubject, 'subject sort')
-         
-                // return filteredMails.sort((a, b) => {
-                //     if(this.setMailsBySubject){
-                //         var subjectDiff = (a.subject.localeCompare(b.subject))
-                //         if(subjectDiff !==0) return subjectDiff
-                //     }
-                //     if(this.setMailsByLatest){
-                //         var timeDiff = (b.sentAt-a.sentAt)
-                //         // if(timeDiff !== 0) return timeDiff
-                //         return timeDiff
-                //     }
-
-                //         return 0
-                // })
-            // }
-
-
             }
         }
-
-    // },
 };

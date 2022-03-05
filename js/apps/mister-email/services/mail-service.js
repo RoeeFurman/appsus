@@ -56,6 +56,18 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
+                subject: 'NOLDEST!',
+                body: 'Would love to catch up sometimes',
+                isRead: true, 
+                isSent: false, 
+                isDraft: false,
+                isStarred: true,
+                isTrash: false,
+                sentAt: 1501133000000,
+                to: 'momo@momo.com'
+            },
+            {
+                id: utilService.makeId(),
                 subject: 'NEWEST!',
                 body: 'Would love to catch up sometimes',
                 isRead: true, 
