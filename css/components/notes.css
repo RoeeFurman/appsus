@@ -32,13 +32,19 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  padding: 0;
 }
 
 .note-card {
   border-radius: 10px;
-  width: 15rem;
   background-color: lightyellow;
   transition: all 200ms;
+  margin-bottom: 1rem;
+  width: calc(25% - 15px);
+}
+
+.gutter-sizer {
+  width: 1%;
 }
 
 .note-card:hover {

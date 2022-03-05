@@ -109,6 +109,18 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
+        type: "note-img",
+        titleTxt: "img note",
+        isPinned: false,
+        info: {
+          url: "https://lafeber.com/pet-birds/wp-content/uploads/2020/04/gamaliel-troubleson-u9PsLITXMCQ-unsplash-e1587001975887.jpg",
+        },
+        style: {
+          backgroundColor: "red",
+        },
+      },
+      {
+        id: utilService.makeId(),
         type: "note-txt",
         titleTxt: "txt note",
         isPinned: false,

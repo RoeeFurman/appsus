@@ -1,13 +1,5 @@
 import notePreview from "../cmps/note-preview.cmp.js";
 
-// $(".notes-area").isotope({
-//   itemSelector: ".note-card",
-//   masonry: {
-//     columnWidth: 100,
-//     horizontalOrder: true,
-//   },
-// });
-
 export default {
   props: ["notes"],
   template: `
@@ -22,7 +14,7 @@ export default {
         </div>
         <div v-if="notPinnedNotes.length > 0">
             <h2>OTHERS</h2>
-            <ul class="notes-area">
+            <ul class="notes-area other-notes">
               <li class="note-card" :key="note.id" v-for="note in notPinnedNotes" :class="[note.style.backgroundColor]">
                   <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
               </li>
@@ -71,5 +63,21 @@ export default {
     notPinnedNotes() {
       return this.notes.filter((note) => note.isPinned === false);
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      const isoPinned = new Isotope(".pinned-notes", {
+        itemSelector: ".note-card",
+        masonry: {
+          gutter: 15,
+        },
+      });
+      const isoOther = new Isotope(".other-notes", {
+        itemSelector: ".note-card",
+        masonry: {
+          gutter: 15,
+        },
+      });
+    }, 100);
   },
 };
