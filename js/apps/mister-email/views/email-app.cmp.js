@@ -52,6 +52,9 @@ export default {
         };
     },
     created() {
+        mailService.query()
+            .then(mails => this.mails = mails);
+            
         mailService.query().then((mails) => (this.mails = mails));
         eventBus.on("sentContent", this.contentReceived);
 
@@ -60,6 +63,7 @@ export default {
             this.composeMode = true;
             this.composeInitialValues = queryParams;
         }
+        
     },
     methods: {
         toggleMenu() {
@@ -99,9 +103,12 @@ export default {
             });
             eventBus.emit("show-msg", { txt: "Mail Deleted", type: "failure" });
         },
-        contentReceived(content) {
-            console.log(content);
-        },
+        // contentReceived(content) {
+        //     console.log(content);
+        // contentReceived(content){
+        //     console.log('hi')
+        //     console.log(content)
+        // },
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },

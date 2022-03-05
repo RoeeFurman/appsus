@@ -23,12 +23,6 @@ export default {
         this.msg = null;
       }, 3000);
     },
-    saveContent(content) {
-      console.log(content);
-      this.content = content;
-      debugger;
-      this.router.push("/mail");
-    },
   },
   unmounted() {
     this.unsubscribe();
