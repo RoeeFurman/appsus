@@ -4,8 +4,16 @@ export default {
   template: `
           <section class="note-add">
               <form @submit="addNote">
-                  <input type="text" class="title" placeholder="Note title" v-model="titleTxt">
-                  <input type="text" class="content" :placeholder="placeholderByType" v-model="info">
+                  <input
+                    type="text"
+                    class="title"
+                    placeholder="Note title"
+                    v-model="titleTxt">
+                  <input
+                    type="text"
+                    class="content"
+                    :placeholder="placeholderByType"
+                    v-model="info">
                   <div class="actions-container">
                     <div class="add-actions">
                       <button type="button" @click="setType('note-txt')">
@@ -36,11 +44,11 @@ export default {
       info: "",
     };
   },
-  created() {},
   methods: {
     addNote() {
       if (!this.info && !this.titleTxt) return;
       const note = { type: this.type, titleTxt: this.titleTxt };
+
       if (this.type === "note-txt") {
         note.info = { txt: this.info };
       }
@@ -70,13 +78,13 @@ export default {
     placeholderByType() {
       switch (this.type) {
         case "note-txt":
-          return `What's on your mind...`;
+          return "What's on your mind...";
         case "note-img":
-          return `Enter image URL...`;
+          return "Enter image URL...";
         case "note-video":
-          return `Enter video URL...`;
+          return "Enter video URL...";
         case "note-todos":
-          return `Enter comma separated list...`;
+          return "Enter comma separated list...";
       }
     },
   },

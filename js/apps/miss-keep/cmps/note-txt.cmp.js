@@ -2,7 +2,7 @@ export default {
   props: ["info"],
   template: `
             <section class="note-txt">
-            <textarea ref="textarea"  v-model="txt" @input="changeTxt(txt)"></textarea>
+              <textarea ref="textarea"  v-model="txt" @input="changeTxt(txt)"></textarea>
             </section>
         `,
   data() {

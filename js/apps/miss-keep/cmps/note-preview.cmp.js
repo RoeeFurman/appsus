@@ -3,7 +3,7 @@ import noteImg from "../cmps/note-img.cmp.js";
 import noteVideo from "../cmps/note-video.cmp.js";
 import noteTodos from "../cmps/note-todos.cmp.js";
 
-const colorOptions = [
+const COLOR_OPTIONS = [
   "red",
   "orange",
   "yellow",
@@ -20,35 +20,44 @@ const colorOptions = [
 export default {
   props: ["note"],
   template: `
-          <section class="note-preview">
-            <header>
-              <input type="text" v-model="title" @input="changeTitle(title, note.id)">
-              <button @click="pinNote(note.id)">
-                <img :src="pinIconSrc" alt="pin">
-              </button>
-            </header>
-            <div class="mainCmp">
-              <component :is="note.type" :info="note.info" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt($event, note.id)"></component>
-            </div>
-            <div class="actions">
-                <button @click="removeNote(note.id)">
-                  <img src="img-notes/bx-trash-alt.svg" alt="trash">
-                </button>
-                <button @click="openPalette">
-                  <img src="img-notes/bx-palette2.svg" alt="palette">
-                </button>
-                <div class="color-container" v-if="clickedColorPalette">
-                  <div class="color" v-for="color in colors" :class="color" @click="updateColor(color, note.id)"></div>
-                </div>
-                <button @click="cloneNote(note.id)">
-                  <img src="img-notes/bx-copy2.svg" alt="duplicate">
-                </button>
-                <button @click="mailNote(note.id)">
-                  <img src="img-notes/bx-paper-plane2.svg" alt="paper-plane">
-                </button>
-              </div>
-            </section>
-      `,
+  <section class="note-preview">
+    <header>
+      <input type="text" v-model="title" @input="changeTitle(title, note.id)">
+      <button @click="pinNote(note.id)">
+        <img :src="pinIconSrc" alt="pin">
+      </button>
+    </header>
+    <div class="mainCmp">
+      <component
+        :is="note.type"
+        :info="note.info"
+        @markCheckBox="markCheckBox"
+        @changeTodo="changeTodo"
+        @changeTxt="changeTxt($event, note.id)" />
+    </div>
+    <div class="actions">
+        <button @click="removeNote(note.id)">
+          <img src="img-notes/bx-trash-alt.svg" alt="trash">
+        </button>
+        <button @click="togglePalette">
+          <img src="img-notes/bx-palette2.svg" alt="palette">
+        </button>
+        <div class="color-container" v-if="clickedColorPalette">
+          <div
+            class="color"
+            v-for="color in colors"
+            :class="color"
+            @click="updateColor(color, note.id)" />
+        </div>
+        <button @click="cloneNote(note.id)">
+          <img src="img-notes/bx-copy2.svg" alt="duplicate">
+        </button>
+        <button @click="mailNote(note.id)">
+          <img src="img-notes/bx-paper-plane2.svg" alt="paper-plane">
+        </button>
+      </div>
+    </section>
+  `,
   components: {
     noteTxt,
     noteImg,
@@ -58,7 +67,7 @@ export default {
   data() {
     return {
       title: this.note.titleTxt,
-      colors: colorOptions,
+      colors: COLOR_OPTIONS,
       clickedColorPalette: false,
     };
   },
@@ -66,11 +75,9 @@ export default {
     removeNote(noteId) {
       this.$emit("noteRemoved", noteId);
     },
-
-    openPalette() {
+    togglePalette() {
       this.clickedColorPalette = !this.clickedColorPalette;
     },
-
     updateColor(color, noteId) {
       this.clickedColorPalette = false;
       this.$emit("updateColor", color, noteId);
@@ -99,10 +106,9 @@ export default {
   },
   computed: {
     pinIconSrc() {
-      if (this.note.isPinned === true) {
-        return "img-notes/pin-full.svg";
-      }
-      return "img-notes/pin-empty.svg";
+      return this.note.isPinned
+        ? "img-notes/pin-full.svg"
+        : "img-notes/pin-empty.svg";
     },
   },
 };

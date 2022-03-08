@@ -1,6 +1,5 @@
 import { utilService } from "../../../services/util-service.js";
 import { storageService } from "../../../services/async-storage-service.js";
-import { eventBus } from "../../../services/eventBus-service.js";
 
 const NOTES_KEY = "notes";
 _createNotes();

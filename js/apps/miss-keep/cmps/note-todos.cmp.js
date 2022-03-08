@@ -30,11 +30,10 @@ export default {
   },
   computed: {
     openTodos() {
-      return this.info.todos.filter((todo) => todo.isDone === false);
+      return this.info.todos.filter((todo) => !todo.isDone);
     },
-
     closeTodos() {
-      return this.info.todos.filter((todo) => todo.isDone === true);
+      return this.info.todos.filter((todo) => todo.isDone);
     },
   },
 };

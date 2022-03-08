@@ -3,25 +3,53 @@ import notePreview from "../cmps/note-preview.cmp.js";
 export default {
   props: ["notes"],
   template: `
-    	<section class="notes-list">
-        <div v-if="pinnedNotes.length > 0">
-          <h2>PINNED</h2>
-          <ul class="notes-area pinned-notes">
-            <li class="note-card" :key="note.id" v-for="note in pinnedNotes" :class="[note.style.backgroundColor]">
-                <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
-            </li>  
-          </ul> 
-        </div>
-        <div v-if="notPinnedNotes.length > 0">
-            <h2>OTHERS</h2>
-            <ul class="notes-area other-notes">
-              <li class="note-card" :key="note.id" v-for="note in notPinnedNotes" :class="[note.style.backgroundColor]">
-                  <note-preview :note="note" @markCheckBox="markCheckBox" @changeTodo="changeTodo" @changeTxt="changeTxt" @changeTitle="changeTitle" @pinNote="pinNote" @mailNote="mailNote" @cloneNote="cloneNote" @noteRemoved="removeNote" @updateColor="updateColor"></note-preview>
-              </li>
-            </ul>
-        </div>
-        </section>
-    `,
+    <section class="notes-list">
+      <div v-if="pinnedNotes.length > 0">
+        <h2>PINNED</h2>
+        <ul class="notes-area pinned-notes">
+          <li
+            class="note-card"
+            :key="note.id"
+            v-for="note in pinnedNotes"
+            :class="[note.style.backgroundColor]">
+              <note-preview
+                :note="note"
+                @markCheckBox="markCheckBox"
+                @changeTodo="changeTodo"
+                @changeTxt="changeTxt"
+                @changeTitle="changeTitle"
+                @pinNote="pinNote"
+                @mailNote="mailNote"
+                @cloneNote="cloneNote"
+                @noteRemoved="removeNote"
+                @updateColor="updateColor" />
+          </li>  
+        </ul> 
+      </div>
+      <div v-if="notPinnedNotes.length > 0">
+          <h2>OTHERS</h2>
+          <ul class="notes-area other-notes">
+            <li
+              class="note-card"
+              :key="note.id"
+              v-for="note in notPinnedNotes"
+              :class="[note.style.backgroundColor]">
+                <note-preview
+                  :note="note"
+                  @markCheckBox="markCheckBox"
+                  @changeTodo="changeTodo"
+                  @changeTxt="changeTxt"
+                  @changeTitle="changeTitle"
+                  @pinNote="pinNote"
+                  @mailNote="mailNote"
+                  @cloneNote="cloneNote"
+                  @noteRemoved="removeNote"
+                  @updateColor="updateColor" />
+            </li>
+          </ul>
+      </div>
+    </section>
+  `,
   components: {
     notePreview,
   },
@@ -30,7 +58,6 @@ export default {
       this.$emit("noteRemoved", noteId);
     },
     updateColor(color, noteId) {
-      this.clickedColorPalette = false;
       this.$emit("updateColor", color, noteId);
     },
     cloneNote(noteId) {
@@ -57,22 +84,21 @@ export default {
   },
   computed: {
     pinnedNotes() {
-      return this.notes.filter((note) => note.isPinned === true);
+      return this.notes.filter((note) => note.isPinned);
     },
-
     notPinnedNotes() {
-      return this.notes.filter((note) => note.isPinned === false);
+      return this.notes.filter((note) => !note.isPinned);
     },
   },
   updated() {
     setTimeout(() => {
-      const isoPinned = new Isotope(".pinned-notes", {
+      new Isotope(".pinned-notes", {
         itemSelector: ".note-card",
         masonry: {
           gutter: 15,
         },
       });
-      const isoOther = new Isotope(".other-notes", {
+      new Isotope(".other-notes", {
         itemSelector: ".note-card",
         masonry: {
           gutter: 15,

@@ -1,12 +1,20 @@
 export default {
   template: `
-          <section class="note-filter">
-          <input type="text" v-model="searchKeyword" placeholder="Search" @input="searchByKeyword"/>
-            <select class="select" @change="setFilter" v-model="filterType" v-if="options" >
-                <option v-for="option in options" :value="option.value">{{option.txt}}</option>
-            </select>
-          </section>
-      `,
+    <section class="note-filter">
+      <input
+        type="text"
+        v-model="searchKeyword"
+        placeholder="Search"
+        @input="searchByKeyword"/>
+      <select class="select" @change="setFilter" v-model="filterType">
+          <option
+            v-for="option in options"
+            :value="option.value">
+            {{option.txt}}
+          </option>
+      </select>
+    </section>
+  `,
   data() {
     return {
       filterType: "",
@@ -22,10 +30,10 @@ export default {
   },
   methods: {
     setFilter() {
-      this.$emit("set-filter", this.filterType);
+      this.$emit("setFilter", this.filterType);
     },
     searchByKeyword() {
-      this.$emit("set-search", this.searchKeyword);
+      this.$emit("setSearch", this.searchKeyword);
     },
   },
 };
